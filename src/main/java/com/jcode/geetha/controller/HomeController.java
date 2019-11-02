@@ -22,9 +22,27 @@ public class HomeController {
     Home page actions comes here
     */
     @GetMapping(path = RequestEndPoints.GET_HOME_PAGE)
-    public String getHomePage(){
+    public String getHomePage() {
         logger.info("Home page page requested ...");
         return ViewEndPoints.HOME_PAGE;
+    }
+
+    @GetMapping(path = RequestEndPoints.GET_SONGS_PAGE)
+    public String getSongsPage() {
+        logger.info("Songs page page requested ...");
+        return ViewEndPoints.SONGS_PAGE;
+    }
+
+    @GetMapping(path = RequestEndPoints.GET_LEADER_BOARD_PAGE)
+    public String getLeaderBoardPage() {
+        logger.info("Leader board page page requested ...");
+        return ViewEndPoints.LEADER_BOARD_PAGE;
+    }
+
+    @GetMapping(path = RequestEndPoints.GET_ABOUT_US_PAGE)
+    public String getAboutUsPage() {
+        logger.info("About us page page requested ...");
+        return ViewEndPoints.ABOUT_US;
     }
 
 }
