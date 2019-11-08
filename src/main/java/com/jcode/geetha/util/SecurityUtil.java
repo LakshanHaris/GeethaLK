@@ -10,4 +10,9 @@ public class SecurityUtil {
     public static String hashPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
+
+    public static boolean matchHashedPassword(String password_user, String password_db) {
+        return BCrypt.checkpw(password_user, password_db);
+    }
+
 }

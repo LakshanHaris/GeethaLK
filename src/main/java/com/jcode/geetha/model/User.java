@@ -56,11 +56,6 @@ public class User implements Serializable {
     @Column(name = "gender")
     private String gender;
     @Basic(optional = false)
-    @NotNull(message = "User role cannot be null")
-    @Size(min = 1, max = 21, message = "Maximum character length exceeded for user role - 21")
-    @Column(name = "role")
-    private String role;
-    @Basic(optional = false)
     @NotNull(message = "User rank cannot be null")
     @Column(name = "rank")
     private int rank = 0;
@@ -79,12 +74,11 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public User(Long userId, String userName, String email, String password, String role, int rank) {
+    public User(Long userId, String userName, String email, String password, int rank) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.password = password;
-        this.role = role;
         this.rank = rank;
     }
 
@@ -168,14 +162,6 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public int getRank() {
         return rank;
     }
@@ -232,4 +218,5 @@ public class User implements Serializable {
     public String toString() {
         return "model.User[ userId=" + userId + " ]";
     }
+
 }

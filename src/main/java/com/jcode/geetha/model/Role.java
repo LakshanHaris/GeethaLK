@@ -32,6 +32,10 @@ public class Role implements Serializable {
     public Role() {
     }
 
+    public Role(int roleId) {
+        this.roleId = roleId;
+    }
+
     public Integer getRoleId() {
         return roleId;
     }
@@ -63,4 +67,5 @@ public class Role implements Serializable {
     public void setPrivilegeList(List<Privilege> privilegeList) {
         this.privilegeList = privilegeList;
     }
+
 }
