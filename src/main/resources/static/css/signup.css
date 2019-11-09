@@ -15,7 +15,7 @@ body {
 
 .form-signin {
     width: 100%;
-    max-width: 400px;
+    max-width: 900px;
     padding: 15px;
     margin: auto;
 }
@@ -52,6 +52,7 @@ body {
 
 #sign_up_link{
     float: right;
+    width: 20px;
 }
 
 #sign_up_label{

@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  width: 100%;
 }
 
 body {
@@ -50,10 +51,4 @@ body {
   }
 }
 
-#sign_up_link{
-    float: right;
-}
 
-#sign_up_label{
-    float: left;
-}
