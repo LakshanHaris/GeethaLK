@@ -1,0 +1,19 @@
+.carousel-control-next, .carousel-control-prev{
+    width: 10%;
+}
+
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+a:link{
+    text-decoration: none;
+}
