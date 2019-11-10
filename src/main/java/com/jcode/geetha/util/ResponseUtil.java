@@ -10,6 +10,14 @@ import com.jcode.geetha.dto.ResponseDTO;
  */
 public class ResponseUtil {
 
+    /*
+    Response attributes declare here
+    */
+    public static final String RESPONSE_DATA = "data";
+    public static final String ERROR_RESPONSE = "errorResponse";
+
+
+
     public static ResponseDTO getResponseDto(String isSuccessOrFail, String message, Object data) {
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setSuccessOrFail(isSuccessOrFail);

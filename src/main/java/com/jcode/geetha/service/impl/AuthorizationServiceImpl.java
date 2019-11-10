@@ -7,6 +7,7 @@ import com.jcode.geetha.repository.PrivilegeRepository;
 import com.jcode.geetha.repository.UserRepository;
 import com.jcode.geetha.service.AuthorizationService;
 import com.jcode.geetha.util.CommonMessages;
+import com.jcode.geetha.util.LoggerUtil;
 import com.jcode.geetha.util.ResponseUtil;
 import com.jcode.geetha.util.SecurityUtil;
 import org.slf4j.Logger;
@@ -41,7 +42,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         ResponseDTO responseDTO;
         if (Objects.isNull(searchedUserWithEmail)) {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_NOT_FOUND_FOR_EMAIL);
-            logger.warn("Response result from authorization service : " + CommonMessages.USER_NOT_FOUND_FOR_EMAIL);
+            logger.warn(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), CommonMessages.USER_NOT_FOUND_FOR_EMAIL));
         } else {
             if (SecurityUtil.matchHashedPassword(password, searchedUserWithEmail.getPassword())) {
                 AuthorizeDTO authorizeData = new AuthorizeDTO();
@@ -51,11 +52,11 @@ public class AuthorizationServiceImpl implements AuthorizationService {
                 authorizeData.setUser(searchedUserWithEmail);
                 authorizeData.setUserPrivilegesMap(userPrivilegesMap);
                 responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.USER_AUTHORIZED_AND_PRIVILEGES_GRANTED, authorizeData);
-                logger.info("Response result from authorization service : " + CommonMessages.USER_AUTHORIZED_AND_PRIVILEGES_GRANTED);
+                logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), CommonMessages.USER_AUTHORIZED_AND_PRIVILEGES_GRANTED));
                 return responseDTO;
             } else {
                 responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.EMAIL_AND_PASSWORD_NOT_MATCHED);
-                logger.warn("Response result from authorization service : " + CommonMessages.EMAIL_AND_PASSWORD_NOT_MATCHED);
+                logger.warn(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), CommonMessages.EMAIL_AND_PASSWORD_NOT_MATCHED));
             }
         }
         return responseDTO;

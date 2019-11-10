@@ -4,10 +4,7 @@ import com.jcode.geetha.dto.AuthorizeDTO;
 import com.jcode.geetha.dto.ResponseDTO;
 import com.jcode.geetha.enums.SessionTypeEnum;
 import com.jcode.geetha.service.AuthorizationService;
-import com.jcode.geetha.util.CommonMessages;
-import com.jcode.geetha.util.RequestEndPoints;
-import com.jcode.geetha.util.SessionUtil;
-import com.jcode.geetha.util.ViewEndPoints;
+import com.jcode.geetha.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,26 +36,25 @@ public class UserAuthorizationController {
     */
     @GetMapping(path = RequestEndPoints.GET_SIGN_IN_PAGE)
     public String getSignInPage() {
-        logger.info("Sign in page requested ...");
+        logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), "Sign in page requested"));
         return ViewEndPoints.SIGN_IN_PAGE;
     }
 
     @PostMapping(path = RequestEndPoints.GET_SIGN_IN_PAGE)
     public ModelAndView signIn(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password, HttpSession session) {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("user/signin");
+        mav.setViewName(ViewEndPoints.SIGN_IN_PAGE);
         if (Objects.nonNull(email) && Objects.nonNull(password)) {
             ResponseDTO<AuthorizeDTO> responseDTO = authorizationService.authorizeUser(email, password);
             if (Objects.nonNull(responseDTO.getData()) && responseDTO.getSuccessOrFail().equalsIgnoreCase(CommonMessages.RESPONSE_DTO_SUCCESS)) {
-                mav.addObject("userDetails", responseDTO.getData().getUser());
-                mav.addObject("userPrivileges", responseDTO.getData().getUserPrivilegesMap());
-                SessionUtil.setAttributesToSession(session, "userData", responseDTO.getData().getUser(), SessionTypeEnum.USER_DETAILS.getNote());
-                mav.setViewName("user/user_profile");
-                logger.info("Response result from authorization controller : User access granted with privileges");
+                mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
+                SessionUtil.setAttributesToSession(session, SessionUtil.USER_DATA, responseDTO.getData().getUser(), SessionTypeEnum.USER_DETAILS.getNote());
+                mav.setViewName(ViewEndPoints.USER_PROFILE);
+                logger.info(LoggerUtil.setLoggerInfo(responseDTO.getData().getUser().getUserName()), this.getClass().toString(), responseDTO.getMessage());
                 return mav;
             } else {
-                mav.addObject("errorResponse", responseDTO);
-                logger.warn("Response result from authorization controller : Something went wrong when authorizing user");
+                mav.addObject(ResponseUtil.ERROR_RESPONSE, responseDTO);
+                logger.info(LoggerUtil.setLoggerInfo(responseDTO.getData().getUser().getUserName()), this.getClass().toString(), responseDTO.getMessage());
                 return mav;
             }
         }

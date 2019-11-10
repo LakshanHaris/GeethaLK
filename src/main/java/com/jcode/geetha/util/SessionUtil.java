@@ -12,6 +12,11 @@ import javax.servlet.http.HttpSession;
  */
 public class SessionUtil {
 
+    /*
+    Session attributes declare here
+    */
+    public static final String USER_DATA="userData";
+
     public static void setAttributesToSession(HttpSession session, String attributeName, Object data, String sessionType) {
         SessionTypeEnum sessionTypeEnum = SessionTypeEnum.valueOf(sessionType);
         switch (sessionTypeEnum) {
