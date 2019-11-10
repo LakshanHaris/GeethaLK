@@ -50,11 +50,11 @@ public class UserAuthorizationController {
                 mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
                 SessionUtil.setAttributesToSession(session, SessionUtil.USER_DATA, responseDTO.getData().getUser(), SessionTypeEnum.USER_DETAILS.getNote());
                 mav.setViewName(ViewEndPoints.USER_PROFILE);
-                logger.info(LoggerUtil.setLoggerInfo(responseDTO.getData().getUser().getUserName()), this.getClass().toString(), responseDTO.getMessage());
+                logger.info(LoggerUtil.setLoggerInfo(responseDTO.getData().getUser().getUserName(), this.getClass().toString(), responseDTO.getMessage()));
                 return mav;
             } else {
                 mav.addObject(ResponseUtil.ERROR_RESPONSE, responseDTO);
-                logger.info(LoggerUtil.setLoggerInfo(responseDTO.getData().getUser().getUserName()), this.getClass().toString(), responseDTO.getMessage());
+                logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
                 return mav;
             }
         }

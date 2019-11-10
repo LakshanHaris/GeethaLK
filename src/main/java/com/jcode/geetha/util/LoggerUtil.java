@@ -15,7 +15,7 @@ public class LoggerUtil {
     }
 
     public static String setLoggerInfo(String... loggerInfo) {
-        return "System user  " + loggerInfo[0] + " accessed " + loggerInfo[1] + " at " + LocalDateTime.now() + " : " + loggerInfo[2];
+        return "System user - " + loggerInfo[0] + " accessed " + loggerInfo[1] + " at " + LocalDateTime.now() + " info : " + loggerInfo[2];
     }
 
 }

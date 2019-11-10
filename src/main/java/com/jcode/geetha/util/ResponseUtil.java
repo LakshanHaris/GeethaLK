@@ -13,7 +13,7 @@ public class ResponseUtil {
     /*
     Response attributes declare here
     */
-    public static final String RESPONSE_DATA = "data";
+    public static final String RESPONSE_DATA = "response";
     public static final String ERROR_RESPONSE = "errorResponse";
 
 
