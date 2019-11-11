@@ -6,10 +6,7 @@ import com.jcode.geetha.model.User;
 import com.jcode.geetha.repository.PrivilegeRepository;
 import com.jcode.geetha.repository.UserRepository;
 import com.jcode.geetha.service.AuthorizationService;
-import com.jcode.geetha.util.CommonMessages;
-import com.jcode.geetha.util.LoggerUtil;
-import com.jcode.geetha.util.ResponseUtil;
-import com.jcode.geetha.util.SecurityUtil;
+import com.jcode.geetha.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +43,8 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         } else {
             if (SecurityUtil.matchHashedPassword(password, searchedUserWithEmail.getPassword())) {
                 AuthorizeDTO authorizeData = new AuthorizeDTO();
-                Map<Integer, String> userPrivilegesMap = privilegeRepository.findPrivilegesByRoleId(searchedUserWithEmail.getRoleId().getRoleId())
-                        .stream()
-                        .collect(Collectors.toMap(privilege -> privilege.getPrivilegeId(), privilege -> privilege.getPrivilegeName()));
-                authorizeData.setUser(searchedUserWithEmail);
-                authorizeData.setUserPrivilegesMap(userPrivilegesMap);
+                authorizeData.setUserDTO(CommonUtil.getUserDTOFromUser(searchedUserWithEmail));
+                authorizeData.setUserPrivilegesMap(getUserPrivileges(searchedUserWithEmail.getRoleId().getRoleId()));
                 responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.USER_AUTHORIZED_AND_PRIVILEGES_GRANTED, authorizeData);
                 logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), CommonMessages.USER_AUTHORIZED_AND_PRIVILEGES_GRANTED));
                 return responseDTO;
@@ -60,6 +54,13 @@ public class AuthorizationServiceImpl implements AuthorizationService {
             }
         }
         return responseDTO;
+    }
+
+    @Override
+    public Map<Integer, String> getUserPrivileges(int roleId) {
+        return privilegeRepository.findPrivilegesByRoleId(roleId)
+                .stream()
+                .collect(Collectors.toMap(privilege -> privilege.getPrivilegeId(), privilege -> privilege.getPrivilegeName()));
     }
 
 }

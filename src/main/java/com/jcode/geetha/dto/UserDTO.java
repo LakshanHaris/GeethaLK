@@ -15,12 +15,12 @@ public class UserDTO implements Serializable {
     private String mobile;
     private String email;
     private String password;
-    private String role;
+    private Integer role;
 
     public UserDTO() {
     }
 
-    public UserDTO(String userName, String email, String password, String role) {
+    public UserDTO(String userName, String email, String password, Integer role) {
         this.userName = userName;
         this.email = email;
         this.password = password;
@@ -51,11 +51,11 @@ public class UserDTO implements Serializable {
         this.password = password;
     }
 
-    public String getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 

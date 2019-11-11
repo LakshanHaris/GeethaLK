@@ -14,13 +14,13 @@
     <jsp:include page="../../jsp/common/main_navigation.jsp"/>
     <div class="container_signIn_signUp">
         <div class="sign_in_form_div">
-            <form class="form-signin">
+            <form class="form-signin" action="../user/signIn" method="post">
                 <!--<img class="mb-4" src="" alt="" width="72" height="72">-->
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
                 <div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
@@ -38,7 +38,7 @@
         </div>
 
         <div class="sign_up_form_div">
-            <form class="form-signup" action="saveUser" method="post" id="signUpForm">
+            <form class="form-signup" action="/saveUser" method="post" id="signUpForm">
                 <!--<img class="mb-4" src="" alt="" width="72" height="72">-->
                 <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
                 <div class="form-row">
@@ -56,7 +56,7 @@
                                required
                                autofocus>
                         <label for="inputEmailSignUp">Email address</label>
-                        <input type="email" id="inputEmailSignUp" name="" class="form-control"
+                        <input type="email" id="inputEmailSignUp" name="email" class="form-control"
                                placeholder="Email address" required
                                autofocus>
                         <label for="inputDob">Date of birth</label>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col">
                         <label for="inputPasswordSignUp">Password</label>
-                        <input type="password" id="inputPasswordSignUp" name="" class="form-control"
+                        <input type="password" id="inputPasswordSignUp" name="password" class="form-control"
                                placeholder="Password"
                                required>
                         <label for="inputConfirmPasswordSignUp">Confirm password</label>

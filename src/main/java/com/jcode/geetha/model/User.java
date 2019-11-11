@@ -64,7 +64,7 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "adminId")
     private List<Approval> approvalCollection;
     @JoinColumn(name = "user_role_id", referencedColumnName = "role_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Role roleId;
 
     public User() {

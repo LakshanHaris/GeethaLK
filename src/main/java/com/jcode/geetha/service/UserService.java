@@ -1,5 +1,6 @@
 package com.jcode.geetha.service;
 
+import com.jcode.geetha.dto.AuthorizeDTO;
 import com.jcode.geetha.dto.ResponseDTO;
 import com.jcode.geetha.dto.UserDTO;
 
@@ -9,5 +10,5 @@ For Geetha.lk
 */
 
 public interface UserService {
-    ResponseDTO<UserDTO> saveUser(UserDTO user);
+    ResponseDTO<AuthorizeDTO> saveUser(UserDTO user);
 }

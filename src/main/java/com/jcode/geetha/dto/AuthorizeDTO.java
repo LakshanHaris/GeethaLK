@@ -1,7 +1,5 @@
 package com.jcode.geetha.dto;
 
-import com.jcode.geetha.model.User;
-
 import java.io.Serializable;
 import java.util.Map;
 
@@ -13,23 +11,23 @@ import java.util.Map;
  */
 public class AuthorizeDTO implements Serializable {
 
-    private User user;
+    private UserDTO userDTO;
     private Map<Integer, String> userPrivilegesMap;
 
     public AuthorizeDTO() {
     }
 
-    public AuthorizeDTO(User user, Map<Integer, String> userPrivilegesMap) {
-        this.user = user;
+    public AuthorizeDTO(UserDTO userDTO, Map<Integer, String> userPrivilegesMap) {
+        this.userDTO = userDTO;
         this.userPrivilegesMap = userPrivilegesMap;
     }
 
-    public User getUser() {
-        return user;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     public Map<Integer, String> getUserPrivilegesMap() {
