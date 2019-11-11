@@ -13,7 +13,10 @@
 </head>
 <body>
 <%--IMPORT MAIN NAV BAR HERE--%>
-<jsp:include page="../jsp/common/main_navigation.jsp"></jsp:include>
+<div class="container">
+    <jsp:include page="../jsp/common/main_navigation.jsp"/>
+</div>
+
 <%--COMMON CSS AND JS WILL BE LOADED THROUHT MAIN NAV FILE--%>
 
 <!--home page main image carousal-->
@@ -243,14 +246,14 @@
             }
         }
     });
-    owl.on('mousewheel', '.owl-stage', function (e) {
-        if (e.deltaY > 0) {
-            owl.trigger('next.owl');
-        } else {
-            owl.trigger('prev.owl');
-        }
-        e.preventDefault();
-    });
+    // owl.on('mousewheel', '.owl-stage', function (e) {
+    //     if (e.deltaY > 0) {
+    //         owl.trigger('next.owl');
+    //     } else {
+    //         owl.trigger('prev.owl');
+    //     }
+    //     e.preventDefault();
+    // });
 
     var owl = $('.owl-carousel-two');
     owl.owlCarousel({
