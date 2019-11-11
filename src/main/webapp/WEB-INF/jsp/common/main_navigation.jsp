@@ -1,5 +1,5 @@
 
-<div class="container">
+<div>
     <!--main nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <a class="navbar-brand" href="#">Geetha LOGO</a>
