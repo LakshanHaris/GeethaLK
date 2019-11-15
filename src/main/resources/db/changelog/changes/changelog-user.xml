@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="lakshan" id="user_1">
+        <insert tableName="user">
+            <column name="email" value="geetha@gmail.com"/>
+            <column name="password" value="lakshan"/>
+            <column name="picture" value="null"/>
+            <column name="dob" value="2019-11-02"/>
+            <column name="mobile" value="0774511679"/>
+            <column name="gender" value="male"/>
+            <column name="rank" value="0"/>
+            <column name="user_role_id" value="3"/>
+            <column name="first_name" value="geetha"/>
+            <column name="last_name" value="test"/>
+            <column name="user_name" value="geetha"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
