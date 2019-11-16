@@ -1,0 +1,10 @@
+.navbar-custom a {
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+
+}
+
+.navbar-custom a:hover {
+    color: #8e8e8e;
+}

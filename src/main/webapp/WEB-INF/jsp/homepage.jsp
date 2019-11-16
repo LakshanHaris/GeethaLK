@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geetha</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/home_page.css" type="text/css">
+    <link rel="stylesheet" href="/css/navbar.css" type="text/css">
+    <link rel="stylesheet" href="/css/footer.css" type="text/css">
     <link rel="stylesheet" href="/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css" type="text/css">
     <link rel="stylesheet" href="/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.css"
           type="text/css">
@@ -290,12 +294,10 @@
             </div>
         </div>
     </div>
-
-
-    <!---->
     <br><br>
-    <br>
+
 </div>
+<jsp:include page="../jsp/common/main_footer.jsp"/>
 <script src="OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js" type="text/javascript"></script>
 <script src="OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.js" type="text/javascript"></script>
 <script type="text/javascript">

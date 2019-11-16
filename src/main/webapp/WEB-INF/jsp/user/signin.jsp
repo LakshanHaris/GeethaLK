@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/signin.css">
+    <link rel="stylesheet" href="/css/navbar.css" type="text/css">
+
 
 </head>
 <body>
@@ -14,19 +17,23 @@
     <jsp:include page="../../jsp/common/main_navigation.jsp"/>
     <div class="container_signIn_signUp">
         <div class="sign_in_form_div">
-            <form class="form-signin">
+            <form class="form-signin" action="../user/signIn" method="post">
                 <!--<img class="mb-4" src="" alt="" width="72" height="72">-->
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
                 <div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
+                    <div class="forgot_password_link">
+                        <a href="">Forgot Password</a>
+                    </div>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+                <button class="btn btn-lg btn-primary btn-block form_btn" type="submit">Sign in</button>
                 <div id="sign_up_label">
                     Don't have a account?
                 </div>
@@ -38,51 +45,59 @@
         </div>
 
         <div class="sign_up_form_div">
-            <form class="form-signup" action="saveUser" method="post" id="signUpForm">
+            <form class="form-signup" action="/saveUser" method="post" id="signUpForm">
                 <!--<img class="mb-4" src="" alt="" width="72" height="72">-->
-                <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+                <h1 class="h3 mb-3 font-weight-normal">Geetha sign up</h1>
                 <div class="form-row">
                     <div class="col">
-                        <label for="inputUname">Username</label>
+                        <br>
+                        <%--<label for="inputUname">Username</label>--%>
                         <input type="text" id="inputUname" name="userName" class="form-control" placeholder="Username"
                                required
                                autofocus>
-                        <label for="inputFname">First Name</label>
+                        <br>
+                        <%--<label for="inputFname">First Name</label>--%>
                         <input type="text" id="inputFname" name="firstName" class="form-control"
                                placeholder="First name" required
                                autofocus>
-                        <label for="inputLname">Last Name</label>
+                        <br>
+                        <%--<label for="inputLname">Last Name</label>--%>
                         <input type="text" id="inputLname" name="lastName" class="form-control" placeholder="Last name"
                                required
                                autofocus>
-                        <label for="inputEmailSignUp">Email address</label>
-                        <input type="email" id="inputEmailSignUp" name="" class="form-control"
+                        <br>
+                        <%--<label for="inputEmailSignUp">Email address</label>--%>
+                        <input type="email" id="inputEmailSignUp" name="email" class="form-control"
                                placeholder="Email address" required
                                autofocus>
-                        <label for="inputDob">Date of birth</label>
+                        <br>
+                        <%--<label for="inputDob">Date of birth</label>--%>
                         <input type="date" id="inputDob" name="dob" class="form-control" placeholder="Date of birth"
                                required>
                     </div>
                     <div class="col">
-                        <label for="inputPasswordSignUp">Password</label>
-                        <input type="password" id="inputPasswordSignUp" name="" class="form-control"
+                        <br>
+                        <%--<label for="inputPasswordSignUp">Password</label>--%>
+                        <input type="password" id="inputPasswordSignUp" name="password" class="form-control"
                                placeholder="Password"
                                required>
-                        <label for="inputConfirmPasswordSignUp">Confirm password</label>
+                        <br>
+                        <%--<label for="inputConfirmPasswordSignUp">Confirm password</label>--%>
                         <input type="password" id="inputConfirmPasswordSignUp" name="" class="form-control"
                                placeholder="Confirm password" required>
 
                         <div class="checkbox mb-3" id="inputGender">
-                            <label for="inputGender">Gender</label>
+                            <%--<label for="inputGender">Gender</label>--%>
                             <br>
                             <input type="checkbox" name="gender" value="male"> Male
                             <input type="checkbox" name="gender" value="female"> Female
                         </div>
-                        <label for="inputMobile">Mobile</label>
+                        <br>
+                        <%--<label for="inputMobile">Mobile</label>--%>
                         <input type="text" id="inputMobile" name="mobile" class="form-control" placeholder="Mobile"
                                required>
                         <br>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit" id="registerBtn">Register
+                        <button class="btn btn-lg btn-primary btn-block form_btn" type="submit" id="registerBtn">Register
                         </button>
                     </div>
                 </div>
