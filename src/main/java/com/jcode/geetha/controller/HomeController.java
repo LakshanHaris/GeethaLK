@@ -35,10 +35,10 @@ public class HomeController {
     Home page actions comes here
     */
     @GetMapping(path = RequestEndPoints.GET_HOME_PAGE)
-    public ModelAndView getTopTenPosts() {
+    public ModelAndView getTopRatedData() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName(ViewEndPoints.HOME_PAGE);
-        ResponseDTO<HomeDTO> responseDTO = homeService.getTopTenPostList();
+        ResponseDTO<HomeDTO> responseDTO = homeService.getTopRatedData();
         if(Objects.nonNull(responseDTO)){
             mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));

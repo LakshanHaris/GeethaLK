@@ -1,6 +1,7 @@
 package com.jcode.geetha.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /*
 Created by Lakshan on 2019.10.11
@@ -10,14 +11,28 @@ public class UserDTO implements Serializable {
     private String userName;
     private String firstName;
     private String lastName;
-    private String dob;
+    private Date dob;
     private String gender;
     private String mobile;
     private String email;
     private String password;
+    private int rank;
     private Integer role;
 
     public UserDTO() {
+    }
+
+    public UserDTO(String userName, String firstName, String lastName, Date dob, String gender, String mobile, String email, String password, int rank, Integer role) {
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.gender = gender;
+        this.mobile = mobile;
+        this.email = email;
+        this.password = password;
+        this.rank = rank;
+        this.role = role;
     }
 
     public UserDTO(String userName, String email, String password, Integer role) {
@@ -75,11 +90,11 @@ public class UserDTO implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 
@@ -98,4 +113,13 @@ public class UserDTO implements Serializable {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
 }

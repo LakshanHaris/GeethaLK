@@ -11,5 +11,5 @@ import com.jcode.geetha.dto.ResponseDTO;
  */
 
 public interface HomeService {
-    ResponseDTO<HomeDTO> getTopTenPostList();
+    ResponseDTO<HomeDTO> getTopRatedData();
 }

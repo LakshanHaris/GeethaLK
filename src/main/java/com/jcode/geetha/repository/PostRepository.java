@@ -2,11 +2,9 @@ package com.jcode.geetha.repository;
 
 import com.jcode.geetha.dto.PostDTO;
 import com.jcode.geetha.model.Post;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,7 +17,7 @@ import java.util.List;
  */
 
 @Repository
-public interface PostRepository extends JpaRepository<Post,Long> {
+public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query(value = "select new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,u.userName,s.name) from Post  as p\n" +
             "    LEFT JOIN User as u\n" +

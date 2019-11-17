@@ -22,7 +22,7 @@ public class CommonUtil {
             newUser.setFirstName(user.getFirstName());
             newUser.setLastName(user.getLastName());
             newUser.setEmail(user.getEmail());
-            newUser.setDob(Date.valueOf(user.getDob()));
+            newUser.setDob(user.getDob());
             newUser.setMobile(user.getMobile());
             newUser.setGender(user.getGender());
             newUser.setRoleId(new Role(3));
@@ -38,7 +38,7 @@ public class CommonUtil {
             userDTO.setUserName(user.getUserName());
             userDTO.setFirstName(user.getFirstName());
             userDTO.setLastName(user.getLastName());
-            userDTO.setDob(user.getDob().toString());
+            userDTO.setDob(user.getDob());
             userDTO.setEmail(user.getEmail());
             userDTO.setGender(user.getGender());
             userDTO.setMobile(user.getMobile());
