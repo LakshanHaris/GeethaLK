@@ -10,11 +10,18 @@
 
 h1 {
     font-family: 'Merriweather', serif;
+}
 
+.geetha_logo{
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .sign_in_form_div {
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 .sign_up_form_div {
@@ -74,7 +81,13 @@ h1 {
     }
 
     .sign_up_form_div {
-        margin-top: 50px;
+        margin-top: 120px;
+    }
+
+
+    .geetha_logo{
+        width: 180px;
+        height: 180px;
     }
 }
 
@@ -98,14 +111,14 @@ h1 {
 /*}*/
 
 .btn {
-    background-color: #ffc107;
-    border-color:#ffc107 ;
+    background-color: #e4d70f;
+    border-color: #ffc107;
     color: #fff;
 }
 
 .btn:hover, .btn:focus, .btn.active {
-    background: #CFD8DC;
-    color: rgba(0, 0, 0, 0.99);
+    background: #252525;
+    color: #fff;
 }
 
 .forgot_password_link {

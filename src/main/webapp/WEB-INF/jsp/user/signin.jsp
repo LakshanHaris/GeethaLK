@@ -18,7 +18,7 @@
     <div class="container_signIn_signUp">
         <div class="sign_in_form_div">
             <form class="form-signin" action="../user/signIn" method="post">
-                <!--<img class="mb-4" src="" alt="" width="72" height="72">-->
+                <img class="geetha_logo" src="/images/Geetha_LOGO.png">
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
                 <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
@@ -68,12 +68,12 @@
                         <br>
                         <%--<label for="inputEmailSignUp">Email address</label>--%>
                         <input type="email" id="inputEmailSignUp" name="email" class="form-control"
-                               placeholder="Email address" required
+                               placeholder="Email address"
                                autofocus>
                         <br>
                         <%--<label for="inputDob">Date of birth</label>--%>
-                        <input type="date" id="inputDob" name="dob" class="form-control" placeholder="Date of birth"
-                               required>
+                        <input type="date" id="inputDob" name="dob" class="form-control" placeholder="Date of birth">
+                        <%--<input placeholder="Date of birth" name="dob" class="form-control" type="text"  onblur="(this.type='date')" id="inputDob">--%>
                     </div>
                     <div class="col">
                         <br>
@@ -85,6 +85,10 @@
                         <%--<label for="inputConfirmPasswordSignUp">Confirm password</label>--%>
                         <input type="password" id="inputConfirmPasswordSignUp" name="" class="form-control"
                                placeholder="Confirm password" required>
+                        <br>
+                        <%--<label for="inputMobile">Mobile</label>--%>
+                        <input type="text" id="inputMobile" name="mobile" class="form-control" placeholder="Mobile"
+                               required>
 
                         <div class="checkbox mb-3" id="inputGender">
                             <%--<label for="inputGender">Gender</label>--%>
@@ -93,10 +97,7 @@
                             <input type="checkbox" name="gender" value="female"> Female
                         </div>
                         <br>
-                        <%--<label for="inputMobile">Mobile</label>--%>
-                        <input type="text" id="inputMobile" name="mobile" class="form-control" placeholder="Mobile"
-                               required>
-                        <br>
+
                         <button class="btn btn-lg btn-primary btn-block form_btn" type="submit" id="registerBtn">Register
                         </button>
                     </div>
