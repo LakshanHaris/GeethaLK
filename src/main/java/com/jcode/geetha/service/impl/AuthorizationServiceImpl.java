@@ -56,6 +56,36 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         return responseDTO;
     }
 
+
+
+
+    @Override
+    public ResponseDTO<AuthorizeDTO> verifyEmail(String email) {
+        User searchedUserWithEmail = userRepository.findByEmail(email);
+        ResponseDTO responseDTO;
+        if (Objects.isNull(searchedUserWithEmail)) {
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.EMAIL_AVAILABLE);
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), CommonMessages.EMAIL_AVAILABLE));
+
+        } else {
+
+                //AuthorizeDTO authorizeData = new AuthorizeDTO();
+                //authorizeData.setUserDTO(CommonUtil.getUserDTOFromUser(searchedUserWithEmail));
+                //authorizeData.setUserPrivilegesMap(getUserPrivileges(searchedUserWithEmail.getRoleId().getRoleId()));
+
+                //return responseDTO;
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_FOUND_FOR_EMAIL);
+            logger.warn(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), CommonMessages.USER_FOUND_FOR_EMAIL));
+
+        }
+        return responseDTO;
+    }
+
+
+
+
+
+
     @Override
     public Map<Integer, String> getUserPrivileges(int roleId) {
         return privilegeRepository.findPrivilegesByRoleId(roleId)

@@ -61,4 +61,15 @@ public class UserAuthorizationController {
         return mav;
     }
 
+    @PostMapping(path = RequestEndPoints.GET_SIGN_IN_PAGE)
+    public ModelAndView verifyEmail(@RequestParam(name = "email") String email) {
+        //ObjectMapper mapper = new ObjectMapper();
+
+        //ModelAndView mav = new ModelAndView();
+        //mav.setViewName(ViewEndPoints.SIGN_IN_PAGE);
+        if (Objects.nonNull(email)) {
+            ResponseDTO<AuthorizeDTO> responseDTO = authorizationService.verifyEmail(email);
+        }
+        return null;
+    }
 }
