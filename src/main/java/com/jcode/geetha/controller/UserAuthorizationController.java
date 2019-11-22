@@ -62,7 +62,7 @@ public class UserAuthorizationController {
         return mav;
     }
 
-    @PostMapping(path = RequestEndPoints.GET_SIGN_IN_PAGE)
+    @PostMapping(path = RequestEndPoints.VERIFY_EMAIL)
     public String verifyEmail(@RequestParam(name = "email") String email) {
         ResponseDTO<AuthorizeDTO> responseDTO = authorizationService.verifyEmail(email);
         String responseAsJson = "";
