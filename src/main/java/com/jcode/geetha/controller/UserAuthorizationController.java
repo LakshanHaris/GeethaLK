@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -62,14 +63,16 @@ public class UserAuthorizationController {
     }
 
     @PostMapping(path = RequestEndPoints.GET_SIGN_IN_PAGE)
-    public ModelAndView verifyEmail(@RequestParam(name = "email") String email) {
-        //ObjectMapper mapper = new ObjectMapper();
-
-        //ModelAndView mav = new ModelAndView();
-        //mav.setViewName(ViewEndPoints.SIGN_IN_PAGE);
-        if (Objects.nonNull(email)) {
-            ResponseDTO<AuthorizeDTO> responseDTO = authorizationService.verifyEmail(email);
+    public String verifyEmail(@RequestParam(name = "email") String email) {
+        ResponseDTO<AuthorizeDTO> responseDTO = authorizationService.verifyEmail(email);
+        String responseAsJson = "";
+        try {
+            responseAsJson = ResponseUtil.getAsJsonStringResponse(responseDTO);
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return null;
+        return responseAsJson;
     }
+
 }
