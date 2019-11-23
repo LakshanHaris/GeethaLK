@@ -1,4 +1,4 @@
-.carousel-control-next, .carousel-control-prev{
+.carousel-control-next, .carousel-control-prev {
     width: 10%;
 }
 
@@ -8,12 +8,25 @@
     transform: translateX(-50%);
 }
 
-#owl-demo .item img{
+#owl-demo .item img {
     display: block;
     width: 100%;
     height: auto;
 }
 
-a:link{
+a:link {
     text-decoration: none;
+}
+
+.owl-stage-outer {
+    margin-top: 50px;
+}
+
+h1 {
+    font-family: 'Merriweather', serif;
+
+}
+
+.nav-link {
+    color: white;
 }
