@@ -1,12 +1,21 @@
 package com.jcode.geetha.controller;
 
+import com.jcode.geetha.dto.HomeDTO;
+import com.jcode.geetha.dto.PostDTO;
+import com.jcode.geetha.dto.ResponseDTO;
+import com.jcode.geetha.service.HomeService;
 import com.jcode.geetha.util.LoggerUtil;
 import com.jcode.geetha.util.RequestEndPoints;
+import com.jcode.geetha.util.ResponseUtil;
 import com.jcode.geetha.util.ViewEndPoints;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Objects;
 
 /**
  * Created by Lakshan harischandra
@@ -19,13 +28,22 @@ public class HomeController {
 
     private final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+    @Autowired
+    private HomeService homeService;
+
     /*
     Home page actions comes here
     */
     @GetMapping(path = RequestEndPoints.GET_HOME_PAGE)
-    public String getHomePage() {
-        logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), "Home page page requested ..."));
-        return ViewEndPoints.HOME_PAGE;
+    public ModelAndView getTopRatedData() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(ViewEndPoints.HOME_PAGE);
+        ResponseDTO<HomeDTO> responseDTO = homeService.getTopRatedData();
+        if(Objects.nonNull(responseDTO)){
+            mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        }
+        return mav;
     }
 
     @GetMapping(path = RequestEndPoints.GET_SONGS_PAGE)

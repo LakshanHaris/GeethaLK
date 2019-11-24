@@ -21,7 +21,7 @@ public class Post implements Serializable {
     private Long postId;
     @Basic(optional = false)
     @NotNull(message = "Post content should not be null")
-    @Size(min = 1, max = 200,  message = "Maximum character length exceeded for post content - 200")
+    @Size(min = 1, max = 200, message = "Maximum character length exceeded for post content - 200")
     @Column(name = "content")
     private String content;
     @Basic(optional = false)
