@@ -1,6 +1,9 @@
 package com.jcode.geetha.util;
 
 import com.jcode.geetha.dto.ResponseDTO;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import java.io.IOException;
 
 /**
  * Created by Lakshan harischandra
@@ -17,7 +20,6 @@ public class ResponseUtil {
     public static final String ERROR_RESPONSE = "errorResponse";
 
 
-
     public static ResponseDTO getResponseDto(String isSuccessOrFail, String message, Object data) {
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setSuccessOrFail(isSuccessOrFail);
@@ -31,6 +33,10 @@ public class ResponseUtil {
         responseDTO.setSuccessOrFail(isSuccessOrFail);
         responseDTO.setMessage(message);
         return responseDTO;
+    }
+
+    public static String getAsJsonStringResponse(Object responseData) throws IOException {
+        return new ObjectMapper().writeValueAsString(responseData);
     }
 
 }

@@ -14,5 +14,6 @@ import java.util.Map;
 
 public interface AuthorizationService {
     ResponseDTO<AuthorizeDTO> authorizeUser(String email, String password);
+    ResponseDTO<AuthorizeDTO> verifyEmail(String email);
     Map<Integer, String> getUserPrivileges(int roleId);
 }

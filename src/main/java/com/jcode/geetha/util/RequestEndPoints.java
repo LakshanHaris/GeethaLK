@@ -14,4 +14,5 @@ public class RequestEndPoints {
     public static final String GET_LEADER_BOARD_PAGE = "user/leaderBoard";
     public static final String GET_ABOUT_US_PAGE = "user/aboutUs";
     public static final String GET_TOP_TEN_POSTS = "topRatedPosts";
+    public static final String VERIFY_EMAIL = "user/verifyEmail";
 }

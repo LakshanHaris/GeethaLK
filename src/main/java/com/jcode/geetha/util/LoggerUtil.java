@@ -18,4 +18,5 @@ public class LoggerUtil {
         return "System user - " + loggerInfo[0] + " accessed " + loggerInfo[1] + " at " + LocalDateTime.now() + " info : " + loggerInfo[2];
     }
 
+
 }
