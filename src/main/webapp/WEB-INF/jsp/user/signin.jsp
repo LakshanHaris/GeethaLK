@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/signin.css">
+    <link rel="stylesheet" href="/css/navbar.css" type="text/css">
+
 
 </head>
 <body>
@@ -14,19 +17,23 @@
     <jsp:include page="../../jsp/common/main_navigation.jsp"/>
     <div class="container_signIn_signUp">
         <div class="sign_in_form_div">
-            <form class="form-signin">
-                <!--<img class="mb-4" src="" alt="" width="72" height="72">-->
+            <form class="form-signin" action="../user/signIn" method="post">
+                <img class="geetha_logo" src="/images/Geetha_LOGO.png">
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
                 <div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
+                    <div class="forgot_password_link">
+                        <a href="">Forgot Password</a>
+                    </div>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+                <button class="btn btn-lg btn-primary btn-block form_btn" type="submit">Sign in</button>
                 <div id="sign_up_label">
                     Don't have a account?
                 </div>
@@ -38,51 +45,63 @@
         </div>
 
         <div class="sign_up_form_div">
-            <form class="form-signup" action="saveUser" method="post" id="signUpForm">
+            <form class="form-signup" action="/saveUser"  method="post" id="signUpForm" onsubmit="return signUpValidations()">
                 <!--<img class="mb-4" src="" alt="" width="72" height="72">-->
-                <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+                <h1 class="h3 mb-3 font-weight-normal">GeethaLK sign up</h1>
                 <div class="form-row">
                     <div class="col">
-                        <label for="inputUname">Username</label>
-                        <input type="text" id="inputUname" name="userName" class="form-control" placeholder="Username"
-                               required
-                               autofocus>
-                        <label for="inputFname">First Name</label>
+                        <%--<label for="inputUname">Username</label>--%>
+                        <input type="text" id="inputUname" name="userName" class="form-control" placeholder="Username" onfocusout="usernameValidation()">
+                        <span id="messageUName"></span>
+                        <br>
+                        <%--<label for="inputFname">First Name</label>--%>
                         <input type="text" id="inputFname" name="firstName" class="form-control"
-                               placeholder="First name" required
-                               autofocus>
-                        <label for="inputLname">Last Name</label>
-                        <input type="text" id="inputLname" name="lastName" class="form-control" placeholder="Last name"
-                               required
-                               autofocus>
-                        <label for="inputEmailSignUp">Email address</label>
-                        <input type="email" id="inputEmailSignUp" name="" class="form-control"
-                               placeholder="Email address" required
-                               autofocus>
-                        <label for="inputDob">Date of birth</label>
-                        <input type="date" id="inputDob" name="dob" class="form-control" placeholder="Date of birth"
-                               required>
+                               placeholder="First name" onfocusout="fNameValidation()">
+                        <span id="messageFName"></span>
+                        <br>
+                        <%--<label for="inputLname">Last Name</label>--%>
+                        <input type="text" id="inputLname" name="lastName" class="form-control" placeholder="Last name" onfocusout="lNameValidation()">
+                        <span id="messageLName"></span>
+                        <br>
+                        <%--<label for="inputEmailSignUp">Email address</label>--%>
+                        <input type="email" id="inputEmailSignUp" name="email" class="form-control"
+                               placeholder="Email address" onfocusout="eMailValidation()">
+                        <span id="messageEMail"></span>
+                        <br>
+                        <%--<label for="inputDob">Date of birth</label>--%>
+                        <input type="date" id="inputDob" name="dob" class="form-control" placeholder="Date of birth" onfocusout="dobValidation()">
+                        <span id="messageDOB"></span>
+                        <br>
+                        <%--<input placeholder="Date of birth" name="dob" class="form-control" type="text"  onblur="(this.type='date')" id="inputDob">--%>
                     </div>
                     <div class="col">
-                        <label for="inputPasswordSignUp">Password</label>
-                        <input type="password" id="inputPasswordSignUp" name="" class="form-control"
-                               placeholder="Password"
-                               required>
-                        <label for="inputConfirmPasswordSignUp">Confirm password</label>
-                        <input type="password" id="inputConfirmPasswordSignUp" name="" class="form-control"
-                               placeholder="Confirm password" required>
-
-                        <div class="checkbox mb-3" id="inputGender">
-                            <label for="inputGender">Gender</label>
-                            <br>
-                            <input type="checkbox" name="gender" value="male"> Male
-                            <input type="checkbox" name="gender" value="female"> Female
-                        </div>
-                        <label for="inputMobile">Mobile</label>
-                        <input type="text" id="inputMobile" name="mobile" class="form-control" placeholder="Mobile"
-                               required>
+                        <%--<label for="inputPasswordSignUp">Password</label>--%>
+                        <input type="password" id="inputPasswordSignUp" name="password" class="form-control"
+                               placeholder="Password" onfocusout="passwordValidation()">
+                        <span id="messagePassword"></span>
                         <br>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit" id="registerBtn">Register
+                        <%--<label for="inputConfirmPasswordSignUp">Confirm password</label>--%>
+                        <input type="password" id="inputConfirmPasswordSignUp" name="confirmPassword" class="form-control"
+                               placeholder="Confirm password" onfocusout="confirmPasswordValidation()">
+                        <span id="messageConfirmPassword"></span>
+                        <br>
+                        <%--<label for="inputMobile">Mobile</label>--%>
+                        <input type="text" id="inputMobile" name="mobile" class="form-control" placeholder="Mobile" onfocusout="mobileNoValidation()">
+                        <span id="messageMobile"></span>
+                        <br>
+                        <div class="custom-control custom-radio custom-control-inline" id="inputGender">
+                            <input type="radio" id="genderMale" name="gender" class="custom-control-input gender" value="male">
+                            <label class="custom-control-label" for="genderMale">Male</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="genderFemale" name="gender" class="custom-control-input gender" value="female">
+                            <label class="custom-control-label" for="genderFemale">Female</label>
+                        </div>
+                        <br>
+                        <span id="messageGender"></span>
+                        <br>
+
+                        <button class="btn btn-lg btn-primary btn-block form_btn" type="submit" id="registerBtn">Register
                         </button>
                     </div>
                 </div>
@@ -94,7 +113,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/user.js"></script>
+<script src="/js/signup_validation.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
