@@ -1,6 +1,5 @@
 package com.jcode.geetha.repository;
 
-import com.jcode.geetha.dto.UserDTO;
 import com.jcode.geetha.model.User;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,9 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByEmail(String email);
 
-    @Query(value = "SELECT new com.jcode.geetha.dto.UserDTO(u.userName,u.firstName,u.lastName,u.dob,u.gender,u.mobile,u.email,u.password,u.rank,u.roleId.roleId)" +
-            " FROM User AS u " +
-            "ORDER BY u.rank DESC ")
-    List<UserDTO> getTopTenUsers(PageRequest pageRequest);
+    @Query(value = "select u.* from User AS u order by rank DESC", nativeQuery = true)
+    List<User> getTopTenUsers(PageRequest pageRequest);
 
 }

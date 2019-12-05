@@ -4,7 +4,8 @@ import com.jcode.geetha.dto.UserDTO;
 import com.jcode.geetha.model.Role;
 import com.jcode.geetha.model.User;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -15,14 +16,14 @@ import java.util.Objects;
  */
 public class CommonUtil {
 
-    public static User getUserFromUserDTO(UserDTO user) {
+    public static User getUserFromUserDTO(UserDTO user) throws Exception {
         if (Objects.nonNull(user)) {
             User newUser = new User();
             newUser.setUserName(user.getUserName());
             newUser.setFirstName(user.getFirstName());
             newUser.setLastName(user.getLastName());
             newUser.setEmail(user.getEmail());
-            newUser.setDob(user.getDob());
+            newUser.setDob(convertStringToDate(user.getDob()));
             newUser.setMobile(user.getMobile());
             newUser.setGender(user.getGender());
             newUser.setRoleId(new Role(3));
@@ -38,7 +39,7 @@ public class CommonUtil {
             userDTO.setUserName(user.getUserName());
             userDTO.setFirstName(user.getFirstName());
             userDTO.setLastName(user.getLastName());
-            userDTO.setDob(user.getDob());
+            userDTO.setDob(user.getDob().toString());
             userDTO.setEmail(user.getEmail());
             userDTO.setGender(user.getGender());
             userDTO.setMobile(user.getMobile());
@@ -46,6 +47,11 @@ public class CommonUtil {
             return userDTO;
         }
         return null;
+    }
+
+    public static Date convertStringToDate(String date) throws Exception {
+        Date dateObj = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        return dateObj;
     }
 
 }

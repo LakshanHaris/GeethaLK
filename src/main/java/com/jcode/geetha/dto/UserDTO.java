@@ -11,7 +11,7 @@ public class UserDTO implements Serializable {
     private String userName;
     private String firstName;
     private String lastName;
-    private Date dob;
+    private String dob;
     private String gender;
     private String mobile;
     private String email;
@@ -22,7 +22,7 @@ public class UserDTO implements Serializable {
     public UserDTO() {
     }
 
-    public UserDTO(String userName, String firstName, String lastName, Date dob, String gender, String mobile, String email, String password, int rank, Integer role) {
+    public UserDTO(String userName, String firstName, String lastName, String dob, String gender, String mobile, String email, String password, int rank, Integer role) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,11 +90,11 @@ public class UserDTO implements Serializable {
         this.lastName = lastName;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 

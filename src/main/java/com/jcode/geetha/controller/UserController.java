@@ -35,7 +35,12 @@ public class UserController {
     */
     @PostMapping(path = RequestEndPoints.SAVE_USER)
     public ModelAndView saveUser(@ModelAttribute("user") UserDTO user, ModelAndView mav, HttpSession session) {
-        ResponseDTO<AuthorizeDTO> responseDTO = userService.saveUser(user);
+        ResponseDTO<AuthorizeDTO> responseDTO = null;
+        try {
+            responseDTO = userService.saveUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if (Objects.nonNull(responseDTO.getData().getUserDTO()) && responseDTO.getSuccessOrFail().equalsIgnoreCase(CommonMessages.RESPONSE_DTO_SUCCESS)) {
             mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
             SessionUtil.setAttributesToSession(session, SessionUtil.USER_DATA, responseDTO.getData().getUserDTO(), SessionTypeEnum.USER_DETAILS.getNote());

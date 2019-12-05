@@ -4,6 +4,7 @@ import com.jcode.geetha.dto.HomeDTO;
 import com.jcode.geetha.dto.PostDTO;
 import com.jcode.geetha.dto.ResponseDTO;
 import com.jcode.geetha.dto.UserDTO;
+import com.jcode.geetha.model.User;
 import com.jcode.geetha.repository.PostRepository;
 import com.jcode.geetha.repository.UserRepository;
 import com.jcode.geetha.service.HomeService;
@@ -35,7 +36,7 @@ public class HomeServiceImpl implements HomeService {
     public ResponseDTO<HomeDTO> getTopRatedData() {
         ResponseDTO responseDTO;
         List<PostDTO> topTenPosts = postRepository.getTopTenPostList(new PageRequest(0, 10));
-        List<UserDTO> topTenUsers = userRepository.getTopTenUsers(new PageRequest(0, 10));
+        List<User> topTenUsers = userRepository.getTopTenUsers(new PageRequest(0, 10));
         if (Objects.nonNull(topTenPosts) && Objects.nonNull(topTenUsers)) {
             HomeDTO homeDTO = new HomeDTO();
             homeDTO.setTopTenPostList(topTenPosts);

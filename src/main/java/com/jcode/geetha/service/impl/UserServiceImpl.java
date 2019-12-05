@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private AuthorizationService authorizationService;
 
     @Override
-    public ResponseDTO<AuthorizeDTO> saveUser(UserDTO user) {
+    public ResponseDTO<AuthorizeDTO> saveUser(UserDTO user) throws Exception {
         ResponseDTO responseDTO;
         UserDTO savedUser = CommonUtil.getUserDTOFromUser(userRepository.save(CommonUtil.getUserFromUserDTO(user)));
         if (Objects.nonNull(savedUser)) {

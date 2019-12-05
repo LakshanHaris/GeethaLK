@@ -10,5 +10,5 @@ For Geetha.lk
 */
 
 public interface UserService {
-    ResponseDTO<AuthorizeDTO> saveUser(UserDTO user);
+    ResponseDTO<AuthorizeDTO> saveUser(UserDTO user) throws Exception;
 }

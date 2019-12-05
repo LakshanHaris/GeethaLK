@@ -1,5 +1,7 @@
 package com.jcode.geetha.dto;
 
+import com.jcode.geetha.model.User;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,7 +14,7 @@ import java.util.List;
 public class HomeDTO implements Serializable {
 
     private List<PostDTO> topTenPostList;
-    private List<UserDTO> topTenUserList;
+    private List<User> topTenUserList;
 
     public List<PostDTO> getTopTenPostList() {
         return topTenPostList;
@@ -22,12 +24,11 @@ public class HomeDTO implements Serializable {
         this.topTenPostList = topTenPostList;
     }
 
-    public List<UserDTO> getTopTenUserList() {
+    public List<User> getTopTenUserList() {
         return topTenUserList;
     }
 
-    public void setTopTenUserList(List<UserDTO> topTenUserList) {
+    public void setTopTenUserList(List<User> topTenUserList) {
         this.topTenUserList = topTenUserList;
     }
-
 }
