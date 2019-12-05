@@ -1,7 +1,9 @@
 package com.jcode.geetha.util;
 
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jcode.geetha.dto.ResponseDTO;
-import org.codehaus.jackson.map.ObjectMapper;
+
 
 import java.io.IOException;
 
