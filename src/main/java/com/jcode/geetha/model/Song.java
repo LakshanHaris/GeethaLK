@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,6 +47,8 @@ public class Song implements Serializable {
     private String lyricsBy;
     @Column(name = "Num_of_posts")
     private Integer numOfPosts;
+    @Column(name = "Date_of_added")
+    private Date dateOfAdded;
     @JoinColumn(name = "song_lyrics_id", referencedColumnName = "lyrics_id")
     @ManyToOne(optional = false)
     private Lyrics lyricsId;
@@ -144,6 +147,14 @@ public class Song implements Serializable {
 
     public void setNumOfPosts(Integer numOfPosts) {
         this.numOfPosts = numOfPosts;
+    }
+
+    public Date getDateOfAdded() {
+        return dateOfAdded;
+    }
+
+    public void setDateOfAdded(Date dateOfAdded) {
+        this.dateOfAdded = dateOfAdded;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.jcode.geetha.controller;
 
 import com.jcode.geetha.dto.HomeDTO;
-import com.jcode.geetha.dto.PostDTO;
 import com.jcode.geetha.dto.ResponseDTO;
 import com.jcode.geetha.service.HomeService;
 import com.jcode.geetha.util.LoggerUtil;
@@ -39,17 +38,11 @@ public class HomeController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName(ViewEndPoints.HOME_PAGE);
         ResponseDTO<HomeDTO> responseDTO = homeService.getTopRatedData();
-        if(Objects.nonNull(responseDTO)){
+        if (Objects.nonNull(responseDTO)) {
             mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
         }
         return mav;
-    }
-
-    @GetMapping(path = RequestEndPoints.GET_SONGS_PAGE)
-    public String getSongsPage() {
-        logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), "Songs page page requested ..."));
-        return ViewEndPoints.SONGS_PAGE;
     }
 
     @GetMapping(path = RequestEndPoints.GET_LEADER_BOARD_PAGE)

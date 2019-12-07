@@ -1,6 +1,7 @@
 package com.jcode.geetha.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Lakshan harischandra
@@ -18,11 +19,12 @@ public class SongDTO implements Serializable {
     private String musicBy;
     private String lyricsBy;
     private int numOfPosts;
+    private Date dateOfAdded;
 
     public SongDTO() {
     }
 
-    public SongDTO(String artist, String name, String type, String mp3, String musicBy, String lyricsBy, int numOfPosts) {
+    public SongDTO(String artist, String name, String type, String mp3, String musicBy, String lyricsBy, int numOfPosts, Date dateOfAdded) {
         this.artist = artist;
         this.name = name;
         this.type = type;
@@ -30,6 +32,7 @@ public class SongDTO implements Serializable {
         this.musicBy = musicBy;
         this.lyricsBy = lyricsBy;
         this.numOfPosts = numOfPosts;
+        this.dateOfAdded = dateOfAdded;
     }
 
     public String getArtist() {
@@ -86,5 +89,13 @@ public class SongDTO implements Serializable {
 
     public void setNumOfPosts(int numOfPosts) {
         this.numOfPosts = numOfPosts;
+    }
+
+    public Date getDateOfAdded() {
+        return dateOfAdded;
+    }
+
+    public void setDateOfAdded(Date dateOfAdded) {
+        this.dateOfAdded = dateOfAdded;
     }
 }

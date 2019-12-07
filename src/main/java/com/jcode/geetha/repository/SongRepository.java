@@ -18,7 +18,11 @@ import java.util.List;
 @Repository
 public interface SongRepository extends JpaRepository<Song,Integer> {
 
-    @Query(value = "SELECT new com.jcode.geetha.dto.SongDTO(s.artist,s.name,s.type,s.mp3,s.musicBy,s.lyricsBy,s.numOfPosts) " +
+    @Query(value = "SELECT new com.jcode.geetha.dto.SongDTO(s.artist,s.name,s.type,s.mp3,s.musicBy,s.lyricsBy,s.numOfPosts,s.dateOfAdded) " +
             "FROM Song AS s ORDER BY s.numOfPosts DESC")
     List<SongDTO> getTopTenSongs(PageRequest pageRequest);
+
+    @Query(value = "SELECT new com.jcode.geetha.dto.SongDTO(s.artist,s.name,s.type,s.mp3,s.musicBy,s.lyricsBy,s.numOfPosts,s.dateOfAdded) " +
+            "FROM Song AS s ORDER BY s.dateOfAdded DESC")
+    List<SongDTO> getLatestTopTenSongs(PageRequest pageRequest);
 }

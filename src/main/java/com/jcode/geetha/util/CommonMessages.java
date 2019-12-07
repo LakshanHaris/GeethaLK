@@ -22,5 +22,7 @@ public class CommonMessages {
     public static final String TOP_RATED_DATA_RETRIEVED_SUCCESS = "Top rated data fetched for home page";
     public static final String TOP_RATED_DATA_RETRIEVED_FAILED = "Something went wrong when fetching top rated data for home page";
     public static final String EMAIL_AVAILABLE = "Email available for use";
+    public static final String LATEST_TOP_TEN_SONGS_FETCHED_SUCCESS = "Latest top ten song list successfully fetched";
+    public static final String LATEST_TOP_TEN_SONGS_FETCHED_FAILED= "Something went wrong when  fetching latest top ten song list";
 
 }
