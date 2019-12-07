@@ -19,7 +19,7 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    @Query(value = "select new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,u.userName,s.name) from Post  as p\n" +
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,u.userName,s.name) from Post  as p\n" +
             "    LEFT JOIN User as u\n" +
             "    ON  p.userId.userId = u.userId\n" +
             "    LEFT JOIN Song as s\n" +

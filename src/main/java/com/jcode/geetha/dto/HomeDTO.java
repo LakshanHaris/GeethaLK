@@ -15,6 +15,7 @@ public class HomeDTO implements Serializable {
 
     private List<PostDTO> topTenPostList;
     private List<User> topTenUserList;
+    private List<SongDTO> topTenSongList;
 
     public List<PostDTO> getTopTenPostList() {
         return topTenPostList;
@@ -30,5 +31,13 @@ public class HomeDTO implements Serializable {
 
     public void setTopTenUserList(List<User> topTenUserList) {
         this.topTenUserList = topTenUserList;
+    }
+
+    public List<SongDTO> getTopTenSongList() {
+        return topTenSongList;
+    }
+
+    public void setTopTenSongList(List<SongDTO> topTenSongList) {
+        this.topTenSongList = topTenSongList;
     }
 }

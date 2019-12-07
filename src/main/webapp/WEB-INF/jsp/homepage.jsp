@@ -62,87 +62,22 @@
     <!--owl carousal-->
     <!-- Set up your HTML -->
     <div class="owl-carousel-two owl-carousel owl-theme">
-        <div>
-            <a href="#">
-                <div class="card">
-                    <img src="/images/jcode.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional cont</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <c:forEach items="${response.data.topTenSongList}" var="song">
+            <div>
+                <a href="#">
+                    <div class="card">
+                        <img src="/images/jcode.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${song.name}</h5>
+                            <p class="card-text">${song.artist}</p>
+                            <p class="card-text">${song.type}</p>
+                            <p class="card-text"><small class="text-muted">Music by : ${song.musicBy}</small></p>
+                            <p class="card-text"><small class="text-muted">Lyrics by ${song.lyricsBy}</small></p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <div class="card">
-                    <img src="/images/jcode.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional cont</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div>
-            <div class="card">
-                <img src="/images/jcode.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional cont</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
+                </a>
             </div>
-        </div>
-        <div>
-            <div class="card">
-                <img src="/images/jcode.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional cont</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="card">
-                <img src="/images/jcode.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional cont</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="card">
-                <img src="/images/jcode.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional cont</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="card">
-                <img src="/images/jcode.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional cont</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
+        </c:forEach>
     </div>
     <br>
     <h1>Top Rated Writers</h1>

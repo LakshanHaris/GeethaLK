@@ -1,11 +1,10 @@
 package com.jcode.geetha.service.impl;
 
-import com.jcode.geetha.dto.HomeDTO;
-import com.jcode.geetha.dto.PostDTO;
-import com.jcode.geetha.dto.ResponseDTO;
-import com.jcode.geetha.dto.UserDTO;
+import com.jcode.geetha.dto.*;
+import com.jcode.geetha.model.Song;
 import com.jcode.geetha.model.User;
 import com.jcode.geetha.repository.PostRepository;
+import com.jcode.geetha.repository.SongRepository;
 import com.jcode.geetha.repository.UserRepository;
 import com.jcode.geetha.service.HomeService;
 import com.jcode.geetha.util.CommonMessages;
@@ -32,15 +31,20 @@ public class HomeServiceImpl implements HomeService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private SongRepository songRepository;
+
     @Override
     public ResponseDTO<HomeDTO> getTopRatedData() {
         ResponseDTO responseDTO;
         List<PostDTO> topTenPosts = postRepository.getTopTenPostList(new PageRequest(0, 10));
         List<User> topTenUsers = userRepository.getTopTenUsers(new PageRequest(0, 10));
+        List<SongDTO> topTenSongs = songRepository.getTopTenSongs(new PageRequest(0, 10));
         if (Objects.nonNull(topTenPosts) && Objects.nonNull(topTenUsers)) {
             HomeDTO homeDTO = new HomeDTO();
             homeDTO.setTopTenPostList(topTenPosts);
             homeDTO.setTopTenUserList(topTenUsers);
+            homeDTO.setTopTenSongList(topTenSongs);
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.TOP_RATED_DATA_RETRIEVED_SUCCESS, homeDTO);
         } else {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.TOP_RATED_DATA_RETRIEVED_FAILED);

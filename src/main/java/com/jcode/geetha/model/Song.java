@@ -44,6 +44,8 @@ public class Song implements Serializable {
     @Size(max = 45, message = "Maximum character size exceeded for song lyricsBy - 45")
     @Column(name = "lyrics_by")
     private String lyricsBy;
+    @Column(name = "Num_of_posts")
+    private Integer numOfPosts;
     @JoinColumn(name = "song_lyrics_id", referencedColumnName = "lyrics_id")
     @ManyToOne(optional = false)
     private Lyrics lyricsId;
@@ -134,6 +136,14 @@ public class Song implements Serializable {
 
     public void setPostCollection(List<Post> postCollection) {
         this.postCollection = postCollection;
+    }
+
+    public Integer getNumOfPosts() {
+        return numOfPosts;
+    }
+
+    public void setNumOfPosts(Integer numOfPosts) {
+        this.numOfPosts = numOfPosts;
     }
 
     @Override
