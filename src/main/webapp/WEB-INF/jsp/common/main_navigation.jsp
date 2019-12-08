@@ -3,7 +3,7 @@
     <!--main nav bar-->
     <nav class="navbar navbar-custom fixed-top navbar-expand-lg" style="background-color: #252525;">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="/images/Geetha_LOGO.png" height="40px" width="40px"></a>
+            <a class="navbar-brand" href="/"><img src="${pageContext.request.contextPath}/images/Geetha_LOGO.png" height="40px" width="40px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -11,10 +11,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active nav_item_text">
-                        <a class="nav-link " href="/">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="${pageContext.request.contextPath}/">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="user/songs">Songs</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/user/songs">Songs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Leaderboard</a>
@@ -23,7 +23,7 @@
                         <a class="nav-link" href="#">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/user/signIn">Sign In</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/user/signIn">Sign In</a>
                     </li>
                     <!--Make this visible for logged user-->
                     <!--<li class="nav-item dropdown">-->
