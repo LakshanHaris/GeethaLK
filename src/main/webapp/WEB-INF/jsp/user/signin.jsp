@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +20,7 @@
         <div class="sign_in_form_div">
             <form class="form-signin" action="../user/signIn" method="post">
                 <img class="geetha_logo" src="/images/Geetha_LOGO.png">
+                <b>${response.successOrFail}</b>
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
                 <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>

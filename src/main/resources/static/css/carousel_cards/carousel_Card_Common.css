@@ -1,0 +1,13 @@
+.card{
+    height: 355px;
+}
+
+@media only screen and (max-width: 400px) {
+    /* For mobile phones: */
+    .post-paragraph{
+        height: 168px;
+    }
+    .card{
+        height: 350px;
+    }
+}
