@@ -18,7 +18,7 @@ import java.util.List;
 public interface PrivilegeRepository extends CrudRepository<Privilege, Integer> {
 
     @Query(value = "SELECT p.* FROM privilege AS p \n" +
-            "INNER JOIN Role_has_privilege AS rp\n" +
+            "INNER JOIN role_has_privilege AS rp\n" +
             "ON p.privilege_id=rp.privilege_id\n" +
             "WHERE rp.role_id= ?1", nativeQuery = true)
     List<Privilege> findPrivilegesByRoleId(int roleId);
