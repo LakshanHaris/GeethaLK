@@ -10,10 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/home_page.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.css"
+    <link rel="stylesheet" href="/css/navbar.css" type="text/css">
+    <link rel="stylesheet" href="/css/footer.css" type="text/css">
+    <link rel="stylesheet" href="/css/carousel_cards/post_carousel_cards.css" type="text/css">
+    <link rel="stylesheet" href="/css/carousel_cards/songs_carousel_cards.css" type="text/css">
+    <link rel="stylesheet" href="/css/carousel_cards/user_carousel_cards.css" type="text/css">
+    <link rel="stylesheet" href="/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.css"
           type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -29,85 +32,26 @@
 <div id="owl-carousel-main" class="owl-carousel owl-theme">
     <div class="item"><img src="/images/slider.png"></div>
     <div class="item"><img src="/images/slider.png"></div>
-    <div class="item"><img src="${pageContext.request.contextPath}/images/slider.png"></div>
+    <div class="item"><img src="/images/slider.png"></div>
 </div>
 <div class="container">
 
     <br>
-    <h1>Top Rated Posts</h1>
-    <!--owl carousal-->
-    <!-- Set up your HTML -->
-    <div class="owl-carousel-two owl-carousel owl-theme">
-
-        <c:forEach items="${response.data.topTenPostList}" var="post">
-            <div>
-                <a href="#">
-                    <div class="card">
-                        <img src="/images/jcode.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">${post.name}</h5>
-                            <p class="card-text">${post.content}</p>
-                            <p class="card-text"><small class="text-muted">Likes : ${post.likes}</small></p>
-                            <p class="card-text"><small class="text-muted">Posted by ${post.userName}</small></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </c:forEach>
-    </div>
-
+    <jsp:include page="../jsp/common/carousal_cards/top_rated_post_card.jsp"/>
 
     <br>
-    <h1>Top Rated Songs</h1>
-    <!--owl carousal-->
-    <!-- Set up your HTML -->
-    <div class="owl-carousel-two owl-carousel owl-theme">
-        <c:forEach items="${response.data.topTenSongList}" var="song">
-            <div>
-                <a href="#">
-                    <div class="card">
-                        <img src="/images/jcode.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">${song.name}</h5>
-                            <p class="card-text">${song.artist}</p>
-                            <p class="card-text">${song.type}</p>
-                            <p class="card-text"><small class="text-muted">Music by : ${song.musicBy}</small></p>
-                            <p class="card-text"><small class="text-muted">Lyrics by ${song.lyricsBy}</small></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </c:forEach>
-    </div>
+    <jsp:include page="../jsp/common/carousal_cards/top_rated_song_card.jsp"/>
+
     <br>
-    <h1>Top Rated Writers</h1>
-    <!--owl carousal-->
-    <!-- Set up your HTML -->
-
-
-    <div class="owl-carousel-two owl-carousel owl-theme">
-        <c:forEach items="${response.data.topTenUserList}" var="user">
-            <div>
-                <a href="#">
-                    <div class="card">
-                        <img src="/images/slider.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">${user.userName}</h5>
-                            <p class="card-text">${user.firstName} ${user.lastName}</p>
-                            <p class="card-text">Rank : ${user.rank}</p>
-                            <p class="card-text"><small class="text-muted">${user.email}</small></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </c:forEach>
-    </div>
+    <jsp:include page="../jsp/common/carousal_cards/top_rated_writer_card.jsp"/>
     <br><br>
 
 </div>
 <jsp:include page="../jsp/common/main_footer.jsp"/>
-<script src="${pageContext.request.contextPath}OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.js" type="text/javascript"></script>
+<script src="OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js" type="text/javascript"></script>
+<script src="OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.js" type="text/javascript"></script>
+
+<%--Script for main header carousel--%>
 <script type="text/javascript">
     var owl_main = $('#owl-carousel-main');
     owl_main.owlCarousel({
@@ -115,16 +59,18 @@
         loop: true,
         margin: 10,
         autoplay: true,
-        autoplayTimeout: 2000,
+        autoplayTimeout: 4000,
+        smartSpeed: 1000,
         autoplayHoverPause: true
     });
     $('.play').on('click', function () {
-        owl_main.trigger('play.owl.autoplay', [1500])
+        owl_main.trigger('play.owl.autoplay', [4000])
     });
     $('.stop').on('click', function () {
         owl_main.trigger('stop.owl.autoplay')
     });
 </script>
+
 <script type="text/javascript">
     var owl = $('.owl-carousel-two');
     owl.owlCarousel({
@@ -140,19 +86,7 @@
                 items: 3,
             },
             1000: {
-                items: 5,
-
-            }
-        }
-    });
-    // owl.on('mousewheel', '.owl-stage', function (e) {
-    //     if (e.deltaY > 0) {
-    //         owl.trigger('next.owl');
-    //     } else {
-    //         owl.trigger('prev.owl');
-    //     }
-    //     e.preventDefault();
-    // });
+                items: 4,
 
     var owl = $('.owl-carousel-two');
     owl.owlCarousel({
