@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByEmail(String email);
 
-    @Query(value = "select u.* from User AS u order by rank DESC", nativeQuery = true)
+    @Query(value = "select u.* from user AS u order by rank DESC", nativeQuery = true)
     List<User> getTopTenUsers(PageRequest pageRequest);
 
 }
