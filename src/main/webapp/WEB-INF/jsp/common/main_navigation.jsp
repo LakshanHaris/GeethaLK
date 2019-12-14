@@ -3,7 +3,11 @@
     <!--main nav bar-->
     <nav class="navbar navbar-custom fixed-top navbar-expand-lg" style="background-color: #252525;">
         <div class="container">
+<<<<<<< Updated upstream
             <a class="navbar-brand" href="/"><img src="/images/Geetha_LOGO.png" height="40px" width="40px"></a>
+=======
+            <a class="navbar-brand" href="/"><img src="../images/Geetha_LOGO_NavBar.png" height="40px" width="200px"></a>
+>>>>>>> Stashed changes
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
