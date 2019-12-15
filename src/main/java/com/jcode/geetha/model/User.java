@@ -1,5 +1,8 @@
 package com.jcode.geetha.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -59,10 +62,13 @@ public class User implements Serializable {
     @NotNull(message = "User rank cannot be null")
     @Column(name = "rank")
     private int rank = 0;
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Post> postCollection;
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "adminId")
     private List<Approval> approvalCollection;
+    @JsonBackReference
     @JoinColumn(name = "user_role_id", referencedColumnName = "role_id")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Role roleId;

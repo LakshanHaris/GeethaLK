@@ -1,5 +1,8 @@
 package com.jcode.geetha.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -28,8 +31,10 @@ public class Approval implements Serializable {
     @Size(max = 45, message = "Maximum character size exceeded for approval remark - 45")
     @Column(name = "remark")
     private String remark;
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "approvalId")
     private List<Post> postCollection;
+    @JsonBackReference
     @JoinColumn(name = "admin_id", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User adminId;

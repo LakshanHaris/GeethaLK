@@ -1,5 +1,7 @@
 package com.jcode.geetha.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -24,8 +26,10 @@ public class Role implements Serializable {
     @Column(name = "role_name")
     @Basic(optional = false)
     private String roleName;
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "roleId")
     private List<User> userList;
+    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleList")
     private List<Privilege> privilegeList;
 

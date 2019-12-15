@@ -9,12 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -23,7 +22,7 @@ import java.util.Objects;
  * Time: 15:36
  * Project: geetha.
  */
-@Controller
+@RestController
 public class UserAuthorizationController {
 
     private final Logger logger = LoggerFactory.getLogger(UserAuthorizationController.class);
@@ -40,25 +39,28 @@ public class UserAuthorizationController {
         return ViewEndPoints.SIGN_IN_PAGE;
     }
 
+    @ResponseBody
     @PostMapping(path = RequestEndPoints.GET_SIGN_IN_PAGE)
-    public ModelAndView signIn(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password, HttpSession session) {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName(ViewEndPoints.SIGN_IN_PAGE);
+    public ResponseDTO signIn(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password, HttpSession session) {
+        ResponseDTO<AuthorizeDTO> responseDTO = new ResponseDTO<>();
         if (Objects.nonNull(email) && Objects.nonNull(password)) {
-            ResponseDTO<AuthorizeDTO> responseDTO = authorizationService.authorizeUser(email, password);
+            responseDTO = authorizationService.authorizeUser(email, password);
             if (Objects.nonNull(responseDTO.getData()) && responseDTO.getSuccessOrFail().equalsIgnoreCase(CommonMessages.RESPONSE_DTO_SUCCESS)) {
-                mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
                 SessionUtil.setAttributesToSession(session, SessionUtil.USER_DATA, responseDTO.getData().getUserDTO(), SessionTypeEnum.USER_DETAILS.getNote());
-                mav.setViewName(ViewEndPoints.USER_PROFILE);
                 logger.info(LoggerUtil.setLoggerInfo(responseDTO.getData().getUserDTO().getUserName(), this.getClass().toString(), responseDTO.getMessage()));
-                return mav;
             } else {
-                mav.addObject(ResponseUtil.ERROR_RESPONSE, responseDTO);
                 logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
-                return mav;
             }
         }
-        return mav;
+        return responseDTO;
+    }
+
+    @PostMapping(path = RequestEndPoints.VERIFY_EMAIL)
+    @ResponseBody
+    public ResponseDTO verifyEmail(@RequestParam(name = "email") String email) {
+        ResponseDTO<AuthorizeDTO> responseDTO = authorizationService.verifyEmail(email);
+        logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        return responseDTO;
     }
 
 }

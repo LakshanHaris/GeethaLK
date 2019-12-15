@@ -1,5 +1,7 @@
 package com.jcode.geetha.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -37,12 +39,15 @@ public class Post implements Serializable {
     private BigInteger shares;
     @Column(name = "views")
     private Double views;
+    @JsonBackReference
     @JoinColumn(name = "post_approval_id", referencedColumnName = "approval_id")
     @ManyToOne(optional = false)
     private Approval approvalId;
+    @JsonBackReference
     @JoinColumn(name = "post_song_id", referencedColumnName = "song_id")
     @ManyToOne(optional = false)
     private Song songId;
+    @JsonBackReference
     @JoinColumn(name = "post_user_id", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User userId;
