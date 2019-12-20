@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Objects;
@@ -22,7 +24,7 @@ import java.util.Objects;
  * Time: 11:13 AM
  * Project: geetha.
  */
-@Controller
+@RestController
 public class SongController {
 
     private final Logger logger = LoggerFactory.getLogger(SongController.class);
@@ -33,18 +35,14 @@ public class SongController {
     /*
     Song page actions comes here
     */
+    @ResponseBody
     @GetMapping(path = RequestEndPoints.GET_SONGS_PAGE)
-    public ModelAndView getSongPage() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName(ViewEndPoints.SONGS_PAGE);
+    public ResponseDTO getSongPage() {
         ResponseDTO<SongPageDTO> responseDTO = songService.getLatestTopTenSongs();
         if (Objects.nonNull(responseDTO)) {
-            mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
-            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
-        } else {
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
         }
-        return mav;
+        return responseDTO;
     }
 
 }

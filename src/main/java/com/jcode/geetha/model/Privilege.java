@@ -1,5 +1,7 @@
 package com.jcode.geetha.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -24,6 +26,7 @@ public class Privilege implements Serializable {
     @Column(name = "privilege_name")
     @Basic(optional = false)
     private String privilegeName;
+    @JsonBackReference
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "role_has_privilege", joinColumns = {
             @JoinColumn(name = "privilege_id", nullable = false, updatable = false)},

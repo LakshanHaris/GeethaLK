@@ -1,5 +1,7 @@
 package com.jcode.geetha.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -22,6 +24,7 @@ public class Lyrics implements Serializable {
     @Size(max = 100, message = "Maximum character size exceeded for lyrics description- 100")
     @Column(name = "description")
     private String description;
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lyricsId")
     private List<Song> songCollection;
 

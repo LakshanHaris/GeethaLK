@@ -1,5 +1,8 @@
 package com.jcode.geetha.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -49,9 +52,11 @@ public class Song implements Serializable {
     private Integer numOfPosts;
     @Column(name = "Date_of_added")
     private Date dateOfAdded;
+    @JsonBackReference
     @JoinColumn(name = "song_lyrics_id", referencedColumnName = "lyrics_id")
     @ManyToOne(optional = false)
     private Lyrics lyricsId;
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "songId")
     private List<Post> postCollection;
 

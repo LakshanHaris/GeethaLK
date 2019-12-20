@@ -5,14 +5,13 @@ import com.jcode.geetha.dto.ResponseDTO;
 import com.jcode.geetha.service.HomeService;
 import com.jcode.geetha.util.LoggerUtil;
 import com.jcode.geetha.util.RequestEndPoints;
-import com.jcode.geetha.util.ResponseUtil;
 import com.jcode.geetha.util.ViewEndPoints;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
@@ -22,7 +21,7 @@ import java.util.Objects;
  * Time: 22:40
  * Project: geetha.
  */
-@Controller
+@RestController
 public class HomeController {
 
     private final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -33,16 +32,14 @@ public class HomeController {
     /*
     Home page actions comes here
     */
+    @ResponseBody
     @GetMapping(path = RequestEndPoints.GET_HOME_PAGE)
-    public ModelAndView getTopRatedData() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName(ViewEndPoints.HOME_PAGE);
+    public ResponseDTO getTopRatedData() {
         ResponseDTO<HomeDTO> responseDTO = homeService.getTopRatedData();
         if (Objects.nonNull(responseDTO)) {
-            mav.addObject(ResponseUtil.RESPONSE_DATA, responseDTO);
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
         }
-        return mav;
+        return responseDTO;
     }
 
     @GetMapping(path = RequestEndPoints.GET_LEADER_BOARD_PAGE)
