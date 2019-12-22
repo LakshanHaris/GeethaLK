@@ -12,4 +12,8 @@ import com.jcode.geetha.dto.SongPageDTO;
 
 public interface SongService {
     ResponseDTO<SongPageDTO> getLatestTopTenSongs();
+
+    ResponseDTO<SongPageDTO> getMostLikedSongs();
+
+    ResponseDTO<SongPageDTO> getTrendingSongs();
 }

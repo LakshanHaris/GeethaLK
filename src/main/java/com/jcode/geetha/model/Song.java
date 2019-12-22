@@ -52,6 +52,10 @@ public class Song implements Serializable {
     private Integer numOfPosts;
     @Column(name = "Date_of_added")
     private Date dateOfAdded;
+    @Column(name = "likes")
+    private Integer likes;
+    @Column(name = "dislikes")
+    private Integer dislikes;
     @JsonBackReference
     @JoinColumn(name = "song_lyrics_id", referencedColumnName = "lyrics_id")
     @ManyToOne(optional = false)
@@ -160,6 +164,22 @@ public class Song implements Serializable {
 
     public void setDateOfAdded(Date dateOfAdded) {
         this.dateOfAdded = dateOfAdded;
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public Integer getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(Integer dislikes) {
+        this.dislikes = dislikes;
     }
 
     @Override

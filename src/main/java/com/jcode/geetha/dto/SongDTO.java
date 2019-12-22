@@ -20,11 +20,13 @@ public class SongDTO implements Serializable {
     private String lyricsBy;
     private int numOfPosts;
     private Date dateOfAdded;
+    private int likes;
+    private int dislikes;
 
     public SongDTO() {
     }
 
-    public SongDTO(String artist, String name, String type, String mp3, String musicBy, String lyricsBy, int numOfPosts, Date dateOfAdded) {
+    public SongDTO(String artist, String name, String type, String mp3, String musicBy, String lyricsBy, int numOfPosts, Date dateOfAdded, int likes, int dislikes) {
         this.artist = artist;
         this.name = name;
         this.type = type;
@@ -33,6 +35,8 @@ public class SongDTO implements Serializable {
         this.lyricsBy = lyricsBy;
         this.numOfPosts = numOfPosts;
         this.dateOfAdded = dateOfAdded;
+        this.likes = likes;
+        this.dislikes = dislikes;
     }
 
     public String getArtist() {
@@ -97,5 +101,21 @@ public class SongDTO implements Serializable {
 
     public void setDateOfAdded(Date dateOfAdded) {
         this.dateOfAdded = dateOfAdded;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
     }
 }

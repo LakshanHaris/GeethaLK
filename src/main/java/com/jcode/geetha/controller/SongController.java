@@ -45,4 +45,24 @@ public class SongController {
         return responseDTO;
     }
 
+    @ResponseBody
+    @GetMapping(path = RequestEndPoints.GET_MOST_LIKED_SONGS)
+    public ResponseDTO getMostLikedSongs(){
+        ResponseDTO<SongPageDTO> responseDTO = songService.getMostLikedSongs();
+        if(Objects.nonNull(responseDTO)){
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        }
+        return responseDTO;
+    }
+
+    @ResponseBody
+    @GetMapping(path = RequestEndPoints.GET_TRENDING_SONGS)
+    public ResponseDTO getTrendingSongs(){
+        ResponseDTO<SongPageDTO> responseDTO = songService.getTrendingSongs();
+        if(Objects.nonNull(responseDTO)){
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        }
+        return responseDTO;
+    }
+
 }

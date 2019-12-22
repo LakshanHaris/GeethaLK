@@ -24,5 +24,9 @@ public class CommonMessages {
     public static final String EMAIL_AVAILABLE = "Email available for use";
     public static final String LATEST_TOP_TEN_SONGS_FETCHED_SUCCESS = "Latest top ten song list successfully fetched";
     public static final String LATEST_TOP_TEN_SONGS_FETCHED_FAILED= "Something went wrong when  fetching latest top ten song list";
+    public static final String MOST_LIKED_SONGS_FETCHED_SUCCESS= "Most liked song list successfully fetched";
+    public static final String MOST_LIKED_SONGS_FETCHED_FAILED= "Something went wrong when  fetching most liked song list";
+    public static final String TRENDING_SONGS_FETCHED_SUCCESS= "Trending songs successfully fetched";
+    public static final String TRENDING_SONGS_FETCHED_FAILED= "Something went wrong when  fetching trending song list";
 
 }

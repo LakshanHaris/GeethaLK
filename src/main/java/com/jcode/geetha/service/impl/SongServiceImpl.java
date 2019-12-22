@@ -40,4 +40,32 @@ public class SongServiceImpl implements SongService {
         return responseDTO;
     }
 
+    @Override
+    public ResponseDTO<SongPageDTO> getMostLikedSongs() {
+        ResponseDTO responseDTO;
+        List<SongDTO> mostLikedSongs = songRepository.getMostLikedSongs(new PageRequest(0, 10));
+        if (Objects.nonNull(mostLikedSongs)) {
+            SongPageDTO songPageDTO = new SongPageDTO();
+            songPageDTO.setMostLikedSongsList(mostLikedSongs);
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.MOST_LIKED_SONGS_FETCHED_SUCCESS, songPageDTO);
+        } else {
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.MOST_LIKED_SONGS_FETCHED_FAILED);
+        }
+        return responseDTO;
+    }
+
+    @Override
+    public ResponseDTO<SongPageDTO> getTrendingSongs() {
+        ResponseDTO responseDTO;
+        List<SongDTO> trendingSongs = songRepository.getTrendingSongs(new PageRequest(0, 10));
+        if (Objects.nonNull(trendingSongs)) {
+            SongPageDTO songPageDTO = new SongPageDTO();
+            songPageDTO.setTrendingSongsList(trendingSongs);
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.TRENDING_SONGS_FETCHED_SUCCESS, songPageDTO);
+        } else {
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.TRENDING_SONGS_FETCHED_FAILED);
+        }
+        return responseDTO;
+    }
+
 }
