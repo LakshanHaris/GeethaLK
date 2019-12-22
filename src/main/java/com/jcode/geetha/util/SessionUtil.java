@@ -16,6 +16,7 @@ public class SessionUtil {
     Session attributes declare here
     */
     public static final String USER_DATA="userData";
+    public static final String USER_DETAILS_DATA_UPDATED_TO_SESSION="User details successfully updated to session";
 
     public static void setAttributesToSession(HttpSession session, String attributeName, Object data, String sessionType) {
         SessionTypeEnum sessionTypeEnum = SessionTypeEnum.valueOf(sessionType);
