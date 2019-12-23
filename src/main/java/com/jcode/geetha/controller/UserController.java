@@ -5,6 +5,7 @@ import com.jcode.geetha.dto.ResponseDTO;
 import com.jcode.geetha.dto.UserDTO;
 import com.jcode.geetha.enums.SessionTypeEnum;
 import com.jcode.geetha.model.User;
+import com.jcode.geetha.service.AuthorizationService;
 import com.jcode.geetha.service.UserService;
 import com.jcode.geetha.util.CommonMessages;
 import com.jcode.geetha.util.LoggerUtil;
@@ -33,6 +34,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuthorizationService authorizationService;
+
     /*
     User actions comes here
     */
@@ -58,6 +62,16 @@ public class UserController {
     @PostMapping(path = RequestEndPoints.UPDATE_USER_DETAILS)
     public ResponseDTO updateUser(@RequestParam("userId") Long userId, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
                                   @RequestParam("mobile") String mobile, @RequestParam("email") String email, @RequestParam("picture") MultipartFile picture, HttpSession session) {
+
+        /*
+        Here we check whether email is existing in the db if yes we send that information to client
+        */
+        if(Objects.nonNull(email)){
+            ResponseDTO<AuthorizeDTO> emailExistsDTO = authorizationService.verifyEmail(email);
+            if(emailExistsDTO.getSuccessOrFail().equalsIgnoreCase("failed")){
+                return emailExistsDTO;
+            }
+        }
 
         if (Objects.nonNull(userId) && Objects.nonNull(firstName) && Objects.nonNull(lastName) && Objects.nonNull(mobile) && Objects.nonNull(email) && Objects.nonNull(picture)) {
             try {
