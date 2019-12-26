@@ -19,4 +19,5 @@ public class RequestEndPoints {
     public static final String GET_TRENDING_SONGS = "songs/trending";
 
     public static final String REACT_CROSS_ORIGIN = "http://localhost:3000";
+    public static final String UPDATE_USER_DETAILS = "user/updateUser";
 }

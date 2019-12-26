@@ -28,5 +28,7 @@ public class CommonMessages {
     public static final String MOST_LIKED_SONGS_FETCHED_FAILED= "Something went wrong when  fetching most liked song list";
     public static final String TRENDING_SONGS_FETCHED_SUCCESS= "Trending songs successfully fetched";
     public static final String TRENDING_SONGS_FETCHED_FAILED= "Something went wrong when  fetching trending song list";
+    public static final String USER_UPDATED_SUCCESSFULLY= "User details updated successfully";
+    public static final String USER_UPDATED_FAILED= "Something went wrong when updating the user details";
 
 }

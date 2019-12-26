@@ -3,6 +3,7 @@ package com.jcode.geetha.service.impl;
 import com.jcode.geetha.dto.AuthorizeDTO;
 import com.jcode.geetha.dto.ResponseDTO;
 import com.jcode.geetha.dto.UserDTO;
+import com.jcode.geetha.model.User;
 import com.jcode.geetha.repository.UserRepository;
 import com.jcode.geetha.service.AuthorizationService;
 import com.jcode.geetha.service.UserService;
@@ -38,6 +39,25 @@ public class UserServiceImpl implements UserService {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.USER_SAVED_SUCCESSFULLY, authorizeDTO);
         } else {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_SAVED_FAILED);
+        }
+        return responseDTO;
+    }
+
+    @Override
+    public ResponseDTO<UserDTO> updateUser(User updateUser) {
+        ResponseDTO responseDTO;
+        User existingUser = userRepository.findByUserId(updateUser.getUserId());
+        if (Objects.nonNull(existingUser)) {
+            updateUser.setDob(existingUser.getDob());
+            updateUser.setGender(existingUser.getGender());
+            updateUser.setUserName(existingUser.getUserName());
+            updateUser.setPassword(existingUser.getPassword());
+            updateUser.setRank(existingUser.getRank());
+            updateUser.setRoleId(existingUser.getRoleId());
+            UserDTO updatedUserDTO = CommonUtil.getUserDTOFromUser(userRepository.saveAndFlush(updateUser));
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.USER_UPDATED_SUCCESSFULLY, updatedUserDTO);
+        } else {
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_UPDATED_FAILED);
         }
         return responseDTO;
     }

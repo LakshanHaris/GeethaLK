@@ -1,7 +1,6 @@
 package com.jcode.geetha.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /*
 Created by Lakshan on 2019.10.11
@@ -18,6 +17,7 @@ public class UserDTO implements Serializable {
     private String password;
     private int rank;
     private Integer role;
+    private byte[] picture;
 
     public UserDTO() {
     }
@@ -122,4 +122,11 @@ public class UserDTO implements Serializable {
         this.rank = rank;
     }
 
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
 }
