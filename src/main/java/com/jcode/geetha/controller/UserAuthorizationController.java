@@ -23,6 +23,7 @@ import java.util.Objects;
  * Project: geetha.
  */
 @RestController
+@CrossOrigin(RequestEndPoints.REACT_CROSS_ORIGIN)
 public class UserAuthorizationController {
 
     private final Logger logger = LoggerFactory.getLogger(UserAuthorizationController.class);
