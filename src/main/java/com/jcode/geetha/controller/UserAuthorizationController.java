@@ -1,5 +1,6 @@
 package com.jcode.geetha.controller;
 
+import com.jcode.geetha.config.JwtUtilService;
 import com.jcode.geetha.dto.AuthorizeDTO;
 import com.jcode.geetha.dto.ResponseDTO;
 import com.jcode.geetha.enums.SessionTypeEnum;
@@ -8,12 +9,9 @@ import com.jcode.geetha.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -31,6 +29,9 @@ public class UserAuthorizationController {
     @Autowired
     private AuthorizationService authorizationService;
 
+    @Autowired
+    private JwtUtilService jwtUtilService;
+
     /*
     User log in/out comes here
     */
@@ -47,6 +48,8 @@ public class UserAuthorizationController {
         if (Objects.nonNull(email) && Objects.nonNull(password)) {
             responseDTO = authorizationService.authorizeUser(email, password);
             if (Objects.nonNull(responseDTO.getData()) && responseDTO.getSuccessOrFail().equalsIgnoreCase(CommonMessages.RESPONSE_DTO_SUCCESS)) {
+                final String jwtTokenForUser = jwtUtilService.generateToken(responseDTO);
+                responseDTO.setJwtToken(jwtTokenForUser);
                 SessionUtil.setAttributesToSession(session, SessionUtil.USER_DATA, responseDTO.getData().getUserDTO(), SessionTypeEnum.USER_DETAILS.getNote());
                 logger.info(LoggerUtil.setLoggerInfo(responseDTO.getData().getUserDTO().getUserName(), this.getClass().toString(), responseDTO.getMessage()));
             } else {

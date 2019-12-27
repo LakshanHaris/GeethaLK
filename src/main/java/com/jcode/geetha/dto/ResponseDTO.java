@@ -13,6 +13,7 @@ public class ResponseDTO<T> implements Serializable {
     private String message;
     private String successOrFail;
     private T data;
+    private String jwtToken;
 
     public ResponseDTO() {
     }
@@ -41,4 +42,11 @@ public class ResponseDTO<T> implements Serializable {
         this.data = data;
     }
 
+    public String getJwtToken() {
+        return jwtToken;
+    }
+
+    public void setJwtToken(String jwtToken) {
+        this.jwtToken = jwtToken;
+    }
 }
