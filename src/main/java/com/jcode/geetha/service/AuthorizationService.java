@@ -2,6 +2,7 @@ package com.jcode.geetha.service;
 
 import com.jcode.geetha.dto.AuthorizeDTO;
 import com.jcode.geetha.dto.ResponseDTO;
+import com.jcode.geetha.model.User;
 
 import java.util.Map;
 
@@ -16,4 +17,5 @@ public interface AuthorizationService {
     ResponseDTO<AuthorizeDTO> authorizeUser(String email, String password);
     ResponseDTO<AuthorizeDTO> verifyEmail(String email);
     Map<Integer, String> getUserPrivileges(int roleId);
+    User findUserByUserName(String userName);
 }

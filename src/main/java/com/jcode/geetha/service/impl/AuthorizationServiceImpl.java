@@ -77,4 +77,9 @@ public class AuthorizationServiceImpl implements AuthorizationService {
                 .collect(Collectors.toMap(privilege -> privilege.getPrivilegeId(), privilege -> privilege.getPrivilegeName()));
     }
 
+    @Override
+    public User findUserByUserName(String userName) {
+        return userRepository.findUserByUserName(userName);
+    }
+
 }

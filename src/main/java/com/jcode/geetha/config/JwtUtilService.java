@@ -2,6 +2,8 @@ package com.jcode.geetha.config;
 
 import com.jcode.geetha.dto.AuthorizeDTO;
 import com.jcode.geetha.dto.ResponseDTO;
+import com.jcode.geetha.model.User;
+import com.jcode.geetha.util.SecurityUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -12,12 +14,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * Created by Lakshan harischandra
+ * Date: 12/27/2019
+ * Time: 16:03
+ * Project: geetha.
+ */
 @Service
 public class JwtUtilService {
 
-    private String SECRET_KEY = "geetha"; // Get from property file
-
-    private String extractUserName(String token) {
+    public String extractUserName(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -31,7 +37,7 @@ public class JwtUtilService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(SecurityUtil.SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
     private Boolean isTokenExpired(String token) {
@@ -46,12 +52,12 @@ public class JwtUtilService {
     private String createToken(Map<String, Object> claims, String userName) {
         return Jwts.builder().setClaims(claims).setSubject(userName).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
+                .signWith(SignatureAlgorithm.HS256, SecurityUtil.SECRET_KEY).compact();
     }
 
-    private Boolean validateToken(String token, ResponseDTO<AuthorizeDTO> userData) {
+    public Boolean validateToken(String token, User userData) {
         final String userName = extractUserName(token);
-        return (userName.equals(userData.getData().getUserDTO().getUserName()) && !isTokenExpired(token));
+        return (userName.equals(userData.getUserName()) && !isTokenExpired(token));
     }
 
 }
