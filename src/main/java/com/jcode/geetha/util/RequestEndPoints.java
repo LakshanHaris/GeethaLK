@@ -17,6 +17,6 @@ public class RequestEndPoints {
     public static final String VERIFY_EMAIL = "user/verifyEmail";
     public static final String GET_MOST_LIKED_SONGS = "songs/mostliked";
     public static final String GET_TRENDING_SONGS = "songs/trending";
-    public static final String REACT_CROSS_ORIGIN = "http://ec2-3-15-230-21.us-east-2.compute.amazonaws.com:3000";
+    public static final String REACT_CROSS_ORIGIN = "http://www.geethalk.com";
     public static final String UPDATE_USER_DETAILS = "user/updateUser";
 }
