@@ -5,17 +5,13 @@ import com.jcode.geetha.dto.SongPageDTO;
 import com.jcode.geetha.service.SongService;
 import com.jcode.geetha.util.LoggerUtil;
 import com.jcode.geetha.util.RequestEndPoints;
-import com.jcode.geetha.util.ResponseUtil;
-import com.jcode.geetha.util.ViewEndPoints;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Objects;
 
@@ -39,7 +35,17 @@ public class SongController {
     */
     @ResponseBody
     @GetMapping(path = RequestEndPoints.GET_SONGS_PAGE)
-    public ResponseDTO getSongPage() {
+    public ResponseDTO getAllSongPage() {
+        ResponseDTO<SongPageDTO> responseDTO = songService.getAllSongPageData();
+        if (Objects.nonNull(responseDTO)) {
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        }
+        return responseDTO;
+    }
+
+    @ResponseBody
+    @GetMapping(path = RequestEndPoints.GET_TOP_TEN_POSTS)
+    public ResponseDTO getLatestTopTenSongs() {
         ResponseDTO<SongPageDTO> responseDTO = songService.getLatestTopTenSongs();
         if (Objects.nonNull(responseDTO)) {
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
@@ -49,9 +55,9 @@ public class SongController {
 
     @ResponseBody
     @GetMapping(path = RequestEndPoints.GET_MOST_LIKED_SONGS)
-    public ResponseDTO getMostLikedSongs(){
+    public ResponseDTO getMostLikedSongs() {
         ResponseDTO<SongPageDTO> responseDTO = songService.getMostLikedSongs();
-        if(Objects.nonNull(responseDTO)){
+        if (Objects.nonNull(responseDTO)) {
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
         }
         return responseDTO;
@@ -59,9 +65,9 @@ public class SongController {
 
     @ResponseBody
     @GetMapping(path = RequestEndPoints.GET_TRENDING_SONGS)
-    public ResponseDTO getTrendingSongs(){
+    public ResponseDTO getTrendingSongs() {
         ResponseDTO<SongPageDTO> responseDTO = songService.getTrendingSongs();
-        if(Objects.nonNull(responseDTO)){
+        if (Objects.nonNull(responseDTO)) {
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
         }
         return responseDTO;

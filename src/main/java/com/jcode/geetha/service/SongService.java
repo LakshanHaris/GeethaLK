@@ -16,4 +16,6 @@ public interface SongService {
     ResponseDTO<SongPageDTO> getMostLikedSongs();
 
     ResponseDTO<SongPageDTO> getTrendingSongs();
+
+    ResponseDTO<SongPageDTO> getAllSongPageData();
 }

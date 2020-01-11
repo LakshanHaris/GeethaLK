@@ -68,4 +68,22 @@ public class SongServiceImpl implements SongService {
         return responseDTO;
     }
 
+    @Override
+    public ResponseDTO<SongPageDTO> getAllSongPageData() {
+        ResponseDTO responseDTO;
+        List<SongDTO> latestTenSongs = songRepository.getLatestTopTenSongs(new PageRequest(0, 10));
+        List<SongDTO> mostLikedSongs = songRepository.getMostLikedSongs(new PageRequest(0, 10));
+        List<SongDTO> trendingSongs = songRepository.getTrendingSongs(new PageRequest(0, 10));
+        if (Objects.nonNull(latestTenSongs) && Objects.nonNull(mostLikedSongs) && Objects.nonNull(trendingSongs)) {
+            SongPageDTO songPageDTO = new SongPageDTO();
+            songPageDTO.setLatestTopTenSongList(latestTenSongs);
+            songPageDTO.setMostLikedSongsList(mostLikedSongs);
+            songPageDTO.setTrendingSongsList(trendingSongs);
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.ALL_SONG_PAGE_DATA_FETCHED_SUCCESS, songPageDTO);
+        } else {
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.ALL_SONG_PAGE_DATA_FETCHED_FAILED);
+        }
+        return responseDTO;
+    }
+
 }

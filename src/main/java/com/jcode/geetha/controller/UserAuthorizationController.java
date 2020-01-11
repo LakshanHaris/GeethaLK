@@ -43,14 +43,13 @@ public class UserAuthorizationController {
 
     @ResponseBody
     @PostMapping(path = RequestEndPoints.GET_SIGN_IN_PAGE)
-    public ResponseDTO signIn(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password, HttpSession session) {
+    public ResponseDTO signIn(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password) {
         ResponseDTO<AuthorizeDTO> responseDTO = new ResponseDTO<>();
         if (Objects.nonNull(email) && Objects.nonNull(password)) {
             responseDTO = authorizationService.authorizeUser(email, password);
             if (Objects.nonNull(responseDTO.getData()) && responseDTO.getSuccessOrFail().equalsIgnoreCase(CommonMessages.RESPONSE_DTO_SUCCESS)) {
                 final String jwtTokenForUser = jwtUtilService.generateToken(responseDTO);
                 responseDTO.setJwtToken(jwtTokenForUser);
-                SessionUtil.setAttributesToSession(session, SessionUtil.USER_DATA, responseDTO.getData().getUserDTO(), SessionTypeEnum.USER_DETAILS.getNote());
                 logger.info(LoggerUtil.setLoggerInfo(responseDTO.getData().getUserDTO().getUserName(), this.getClass().toString(), responseDTO.getMessage()));
             } else {
                 logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));

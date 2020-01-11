@@ -13,7 +13,7 @@ public class RequestEndPoints {
     public static final String GET_SONGS_PAGE = "user/songs";
     public static final String GET_LEADER_BOARD_PAGE = "user/leaderBoard";
     public static final String GET_ABOUT_US_PAGE = "user/aboutUs";
-    public static final String GET_TOP_TEN_POSTS = "topRatedPosts";
+    public static final String GET_TOP_TEN_POSTS = "topTenPosts";
     public static final String VERIFY_EMAIL = "user/verifyEmail";
     public static final String GET_MOST_LIKED_SONGS = "songs/mostliked";
     public static final String GET_TRENDING_SONGS = "songs/trending";

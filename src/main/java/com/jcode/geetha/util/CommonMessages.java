@@ -13,9 +13,9 @@ public class CommonMessages {
     */
     public static final String RESPONSE_DTO_SUCCESS = "success";
     public static final String RESPONSE_DTO_FAILED = "failed";
-    public static final String USER_NOT_FOUND_FOR_EMAIL = "Sorry We didn't find a user for that email. Please check your email again";
+    public static final String USER_NOT_FOUND_FOR_EMAIL = "Your email does not exists";
     public static final String USER_FOUND_FOR_EMAIL = "Email is already taken";
-    public static final String EMAIL_AND_PASSWORD_NOT_MATCHED = "Your entered password didn't match. Please check your credentials again";
+    public static final String EMAIL_AND_PASSWORD_NOT_MATCHED = "Wrong password";
     public static final String USER_AUTHORIZED_AND_PRIVILEGES_GRANTED = "User identified and privileges granted";
     public static final String USER_SAVED_SUCCESSFULLY = "User saved successfully";
     public static final String USER_SAVED_FAILED = "Sorry something went wrong when saving user";
@@ -30,5 +30,7 @@ public class CommonMessages {
     public static final String TRENDING_SONGS_FETCHED_FAILED= "Something went wrong when  fetching trending song list";
     public static final String USER_UPDATED_SUCCESSFULLY= "User details updated successfully";
     public static final String USER_UPDATED_FAILED= "Something went wrong when updating the user details";
+    public static final String ALL_SONG_PAGE_DATA_FETCHED_SUCCESS= "All songs page data successfully fetched";
+    public static final String ALL_SONG_PAGE_DATA_FETCHED_FAILED= "Something went wrong when fetching all song page data";
 
 }

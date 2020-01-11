@@ -49,7 +49,7 @@ public class Post implements Serializable {
     private Song songId;
     @JsonBackReference
     @JoinColumn(name = "post_user_id", referencedColumnName = "user_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User userId;
 
     public Post() {
