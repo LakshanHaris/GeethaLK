@@ -15,6 +15,8 @@ public class SongPageDTO implements Serializable {
     private List<SongDTO> latestTopTenSongList;
     private List<SongDTO> mostLikedSongsList;
     private List<SongDTO> trendingSongsList;
+    private List<PostDTO> postDTOList;
+    private SongDTO songDTO;
 
     public List<SongDTO> getLatestTopTenSongList() {
         return latestTopTenSongList;
@@ -38,5 +40,21 @@ public class SongPageDTO implements Serializable {
 
     public void setTrendingSongsList(List<SongDTO> trendingSongsList) {
         this.trendingSongsList = trendingSongsList;
+    }
+
+    public List<PostDTO> getPostDTOList() {
+        return postDTOList;
+    }
+
+    public void setPostDTOList(List<PostDTO> postDTOList) {
+        this.postDTOList = postDTOList;
+    }
+
+    public SongDTO getSongDTO() {
+        return songDTO;
+    }
+
+    public void setSongDTO(SongDTO songDTO) {
+        this.songDTO = songDTO;
     }
 }

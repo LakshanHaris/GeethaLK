@@ -8,10 +8,7 @@ import com.jcode.geetha.util.RequestEndPoints;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
@@ -67,6 +64,26 @@ public class SongController {
     @GetMapping(path = RequestEndPoints.GET_TRENDING_SONGS)
     public ResponseDTO getTrendingSongs() {
         ResponseDTO<SongPageDTO> responseDTO = songService.getTrendingSongs();
+        if (Objects.nonNull(responseDTO)) {
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        }
+        return responseDTO;
+    }
+
+    @ResponseBody
+    @PostMapping(path = RequestEndPoints.GET_POSTS_FOR_SONG)
+    public ResponseDTO getDataForSong(@RequestParam("songId") int songId) {
+        ResponseDTO<SongPageDTO> responseDTO = songService.getSongData(songId);
+        if (Objects.nonNull(responseDTO)) {
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        }
+        return responseDTO;
+    }
+
+    @ResponseBody
+    @GetMapping(path = RequestEndPoints.UPDATE_SONG_LIKES)
+    public ResponseDTO likeForSong(@RequestParam("songId") int songId) {
+        ResponseDTO responseDTO = songService.updateSongLikeCount(songId);
         if (Objects.nonNull(responseDTO)) {
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
         }

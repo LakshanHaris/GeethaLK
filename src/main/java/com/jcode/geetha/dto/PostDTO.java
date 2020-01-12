@@ -47,6 +47,16 @@ public class PostDTO implements Serializable {
         this.songName = songName;
     }
 
+    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views) {
+        this.postId = postId;
+        this.content = content;
+        this.mainHeader = mainHeader;
+        this.likes = likes;
+        this.dislikes = dislikes;
+        this.shares = shares;
+        this.views = views;
+    }
+
     public Long getPostId() {
         return postId;
     }

@@ -22,16 +22,16 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,u.userName,s.name) from Post  as p\n" +
-            "    LEFT JOIN User as u\n" +
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,u.userName,s.name) from Post  AS p\n" +
+            "    LEFT JOIN User AS u\n" +
             "    ON  p.userId.userId = u.userId\n" +
-            "    LEFT JOIN Song as s\n" +
+            "    LEFT JOIN Song AS s\n" +
             "    ON p.songId.songId=s.songId\n" +
             "    ORDER BY p.likes DESC")
     List<PostDTO> getTopTenPostList(Pageable pageable);
 
-    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,s.name) from Post  as p " +
-            "LEFT JOIN Song as s " +
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,s.name) from Post  AS p " +
+            "LEFT JOIN Song AS s " +
             "ON p.songId.songId=s.songId " +
             "WHERE p.userId.userId=?1 " +
             "ORDER BY p.postId DESC")
@@ -43,9 +43,12 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     int updateUserPost(@Param("content") String content, @Param("mainHeader") String mainHeader, @Param("postId") Long postId);
 
     @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,s.name) from Post AS p " +
-            "LEFT JOIN Song as s " +
+            "LEFT JOIN Song AS s " +
             "ON p.songId.songId=s.songId " +
             "WHERE p.postId = ?1 ")
     PostDTO findUserPostDTOWithPostId(Long postId);
 
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views) from Post AS p " +
+            "WHERE p.songId.songId = ?1 ")
+    List<PostDTO> findPostsForSong(int songId, Pageable pageable);
 }

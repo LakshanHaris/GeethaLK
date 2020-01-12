@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
-    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet author="lakshan" id="song_1">
         <addColumn schemaName="geetha"
                    tableName="song">
-            <column name="Num_of_posts" type="int(11)"  defaultValue="0"/>
+            <column name="Num_of_posts" type="int(11)" defaultValue="0"/>
         </addColumn>
     </changeSet>
 
     <changeSet author="lakshan" id="song_2">
         <addColumn schemaName="geetha"
                    tableName="song">
-            <column name="Date_of_added" type="date"  defaultValue="2019-12-07"/>
+            <column name="Date_of_added" type="date" defaultValue="2019-12-07"/>
         </addColumn>
     </changeSet>
 
     <changeSet author="lakshan" id="song_3">
         <addColumn schemaName="geetha"
                    tableName="song">
-            <column name="likes" type="int(25)"  defaultValue="0"/>
+            <column name="likes" type="int(25)" defaultValue="0"/>
         </addColumn>
     </changeSet>
 
     <changeSet author="lakshan" id="song_4">
         <addColumn schemaName="geetha"
                    tableName="song">
-            <column name="dislikes" type="int(25)"  defaultValue="0"/>
+            <column name="dislikes" type="int(25)" defaultValue="0"/>
         </addColumn>
+    </changeSet>
+
+    <changeSet author="lakshan" id="song_5">
+        <renameColumn
+                columnDataType="varchar(85)"
+                newColumnName="youtubeId"
+                oldColumnName="mp3"
+                tableName="song"/>
     </changeSet>
 </databaseChangeLog>

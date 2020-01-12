@@ -15,28 +15,43 @@ public class SongDTO implements Serializable {
     private String artist;
     private String name;
     private String type;
-    private String mp3;
+    private String youtubeId;
     private String musicBy;
     private String lyricsBy;
     private int numOfPosts;
     private Date dateOfAdded;
     private int likes;
     private int dislikes;
+    private String lyricsDescription;
 
     public SongDTO() {
     }
 
-    public SongDTO(String artist, String name, String type, String mp3, String musicBy, String lyricsBy, int numOfPosts, Date dateOfAdded, int likes, int dislikes) {
+    public SongDTO(String artist, String name, String type, String youtubeId, String musicBy, String lyricsBy, int numOfPosts, Date dateOfAdded, int likes, int dislikes) {
         this.artist = artist;
         this.name = name;
         this.type = type;
-        this.mp3 = mp3;
+        this.youtubeId = youtubeId;
         this.musicBy = musicBy;
         this.lyricsBy = lyricsBy;
         this.numOfPosts = numOfPosts;
         this.dateOfAdded = dateOfAdded;
         this.likes = likes;
         this.dislikes = dislikes;
+    }
+
+    public SongDTO(String artist, String name, String type, String youtubeId, String musicBy, String lyricsBy, int numOfPosts, Date dateOfAdded, int likes, int dislikes, String description) {
+        this.artist = artist;
+        this.name = name;
+        this.type = type;
+        this.youtubeId = youtubeId;
+        this.musicBy = musicBy;
+        this.lyricsBy = lyricsBy;
+        this.numOfPosts = numOfPosts;
+        this.dateOfAdded = dateOfAdded;
+        this.likes = likes;
+        this.dislikes = dislikes;
+        this.lyricsDescription = description;
     }
 
     public String getArtist() {
@@ -63,12 +78,12 @@ public class SongDTO implements Serializable {
         this.type = type;
     }
 
-    public String getMp3() {
-        return mp3;
+    public String getYoutubeId() {
+        return youtubeId;
     }
 
-    public void setMp3(String mp3) {
-        this.mp3 = mp3;
+    public void setYoutubeId(String youtubeId) {
+        this.youtubeId = youtubeId;
     }
 
     public String getMusicBy() {
@@ -117,5 +132,13 @@ public class SongDTO implements Serializable {
 
     public void setDislikes(int dislikes) {
         this.dislikes = dislikes;
+    }
+
+    public String getLyricsDescription() {
+        return lyricsDescription;
+    }
+
+    public void setLyricsDescription(String lyricsDescription) {
+        this.lyricsDescription = lyricsDescription;
     }
 }

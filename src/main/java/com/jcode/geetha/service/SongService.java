@@ -18,4 +18,8 @@ public interface SongService {
     ResponseDTO<SongPageDTO> getTrendingSongs();
 
     ResponseDTO<SongPageDTO> getAllSongPageData();
+
+    ResponseDTO<SongPageDTO> getSongData(int songId);
+
+    ResponseDTO updateSongLikeCount(int songId);
 }

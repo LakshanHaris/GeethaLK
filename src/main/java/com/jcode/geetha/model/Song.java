@@ -40,8 +40,8 @@ public class Song implements Serializable {
     @Basic(optional = false)
     @NotNull(message = "Song Mp3 cannot be null")
     @Size(min = 1, max = 85, message = "Maximum character size exceeded for song mp3 - 85")
-    @Column(name = "mp3")
-    private String mp3;
+    @Column(name = "youtubeId")
+    private String youtubeId;
     @Size(max = 45, message = "Maximum character size exceeded for song musicBy - 45")
     @Column(name = "music_by")
     private String musicBy;
@@ -61,7 +61,7 @@ public class Song implements Serializable {
     @ManyToOne(optional = false)
     private Lyrics lyricsId;
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "songId",fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "songId", fetch = FetchType.EAGER)
     private List<Post> postCollection;
 
     public Song() {
@@ -71,11 +71,11 @@ public class Song implements Serializable {
         this.songId = songId;
     }
 
-    public Song(Integer songId, String artist, String name, String mp3) {
+    public Song(Integer songId, String artist, String name, String youtubeId) {
         this.songId = songId;
         this.artist = artist;
         this.name = name;
-        this.mp3 = mp3;
+        this.youtubeId = youtubeId;
     }
 
     public Integer getSongId() {
@@ -110,12 +110,12 @@ public class Song implements Serializable {
         this.type = type;
     }
 
-    public String getMp3() {
-        return mp3;
+    public String getYoutubeId() {
+        return youtubeId;
     }
 
-    public void setMp3(String mp3) {
-        this.mp3 = mp3;
+    public void setYoutubeId(String youtubeId) {
+        this.youtubeId = youtubeId;
     }
 
     public String getMusicBy() {
