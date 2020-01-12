@@ -36,7 +36,7 @@ public class Approval implements Serializable {
     private List<Post> postCollection;
     @JsonBackReference
     @JoinColumn(name = "admin_id", referencedColumnName = "user_id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private User adminId;
 
     public Approval() {

@@ -61,7 +61,7 @@ public class Song implements Serializable {
     @ManyToOne(optional = false)
     private Lyrics lyricsId;
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "songId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "songId",fetch = FetchType.EAGER)
     private List<Post> postCollection;
 
     public Song() {

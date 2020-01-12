@@ -4,8 +4,11 @@ import com.jcode.geetha.dto.PostDTO;
 import com.jcode.geetha.model.Post;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,5 +37,15 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "ORDER BY p.postId DESC")
     List<PostDTO> getUserPosts(Long userId, Pageable pageable);
 
-    Post findByPostId(Long postId);
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query(value = "UPDATE post SET content=:content,main_header=:mainHeader WHERE post_id=:postId", nativeQuery = true)
+    int updateUserPost(@Param("content") String content, @Param("mainHeader") String mainHeader, @Param("postId") Long postId);
+
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,s.name) from Post AS p " +
+            "LEFT JOIN Song as s " +
+            "ON p.songId.songId=s.songId " +
+            "WHERE p.postId = ?1 ")
+    PostDTO findUserPostDTOWithPostId(Long postId);
+
 }

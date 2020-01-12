@@ -27,7 +27,7 @@ public class Role implements Serializable {
     @Basic(optional = false)
     private String roleName;
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "roleId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "roleId",fetch = FetchType.EAGER)
     private List<User> userList;
     @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleList")

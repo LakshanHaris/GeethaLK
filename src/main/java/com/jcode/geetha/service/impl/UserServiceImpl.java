@@ -82,19 +82,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseDTO<Post> updateUserPost(PostDTO postDTO) {
+    public ResponseDTO<PostDTO> updateUserPost(PostDTO postDTO) {
         ResponseDTO responseDTO;
-        Post searchedPost = postRepository.findByPostId(postDTO.getPostId());
-        if (Objects.nonNull(searchedPost)) {
-            Post updatedPost = postRepository.saveAndFlush(CommonUtil.generateUpdatedPost(postDTO, searchedPost));
-            if (Objects.nonNull(updatedPost)) {
-                responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.USER_POST_SUCCESSFULLY_UPDATED, updatedPost);
+            int updatedPost = postRepository.updateUserPost(postDTO.getContent(),postDTO.getMainHeader(),postDTO.getPostId());
+            if (updatedPost>0) {
+                PostDTO updatedPostDTO = postRepository.findUserPostDTOWithPostId(postDTO.getPostId());
+                responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.USER_POST_SUCCESSFULLY_UPDATED, updatedPostDTO);
             } else {
                 responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_POST_UPDATE_FAILED);
             }
-        } else {
-            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_POST_NOT_FOUND);
-        }
+
         return responseDTO;
     }
 

@@ -16,5 +16,5 @@ public interface UserService {
 
     ResponseDTO<UserDetailPageDTO> getUserPosts(Long userId);
 
-    ResponseDTO<Post> updateUserPost(PostDTO postDTO);
+    ResponseDTO<PostDTO> updateUserPost(PostDTO postDTO);
 }

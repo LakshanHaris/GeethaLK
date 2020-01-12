@@ -96,7 +96,7 @@ public class UserController {
     @ResponseBody
     @PostMapping(path = RequestEndPoints.UPDATE_USER_POST)
     public ResponseDTO updateUserPost(@ModelAttribute("post") PostDTO postDTO) {
-        ResponseDTO<Post> responseDTO = userService.updateUserPost(postDTO);
+        ResponseDTO<PostDTO> responseDTO = userService.updateUserPost(postDTO);
         if (Objects.nonNull(responseDTO)) {
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
         }
