@@ -27,4 +27,10 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "    ORDER BY p.likes DESC")
     List<PostDTO> getTopTenPostList(Pageable pageable);
 
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,s.name) from Post  as p " +
+            "LEFT JOIN Song as s " +
+            "ON p.songId.songId=s.songId " +
+            "WHERE p.userId.userId=?1 " +
+            "ORDER BY p.postId DESC")
+    List<PostDTO> getUserPosts(Long userId, Pageable pageable);
 }

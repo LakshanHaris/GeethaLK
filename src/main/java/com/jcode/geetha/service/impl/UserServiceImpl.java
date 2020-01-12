@@ -1,9 +1,8 @@
 package com.jcode.geetha.service.impl;
 
-import com.jcode.geetha.dto.AuthorizeDTO;
-import com.jcode.geetha.dto.ResponseDTO;
-import com.jcode.geetha.dto.UserDTO;
+import com.jcode.geetha.dto.*;
 import com.jcode.geetha.model.User;
+import com.jcode.geetha.repository.PostRepository;
 import com.jcode.geetha.repository.UserRepository;
 import com.jcode.geetha.service.AuthorizationService;
 import com.jcode.geetha.service.UserService;
@@ -11,8 +10,10 @@ import com.jcode.geetha.util.CommonMessages;
 import com.jcode.geetha.util.CommonUtil;
 import com.jcode.geetha.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 /*
@@ -27,6 +28,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private AuthorizationService authorizationService;
+
+    @Autowired
+    private PostRepository postRepository;
 
     @Override
     public ResponseDTO<AuthorizeDTO> saveUser(UserDTO user) throws Exception {
@@ -58,6 +62,20 @@ public class UserServiceImpl implements UserService {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.USER_UPDATED_SUCCESSFULLY, updatedUserDTO);
         } else {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_UPDATED_FAILED);
+        }
+        return responseDTO;
+    }
+
+    @Override
+    public ResponseDTO<UserDetailPageDTO> getUserPosts(Long userId) {
+        ResponseDTO responseDTO;
+        List<PostDTO> postDTOList = postRepository.getUserPosts(userId, new PageRequest(0, 10));
+        if (Objects.nonNull(postDTOList)) {
+            UserDetailPageDTO userDetailPageDTO = new UserDetailPageDTO();
+            userDetailPageDTO.setPostDTOList(postDTOList);
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.POSTS_FETCHED_SUCCESS_FOR_USER_DETAIL_PAGE, userDetailPageDTO);
+        } else {
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.POSTS_FETCHED_FAILED_FOR_USER_DETAIL_PAGE);
         }
         return responseDTO;
     }

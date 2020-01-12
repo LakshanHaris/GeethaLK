@@ -26,6 +26,7 @@ public class CommonUtil {
             newUser.setDob(convertStringToDate(user.getDob()));
             newUser.setMobile(user.getMobile());
             newUser.setGender(user.getGender());
+            newUser.setPicture(user.getPicture());
             newUser.setRoleId(new Role(3));
             newUser.setPassword(SecurityUtil.hashPassword(user.getPassword()));
             return newUser;
@@ -43,6 +44,7 @@ public class CommonUtil {
             userDTO.setEmail(user.getEmail());
             userDTO.setGender(user.getGender());
             userDTO.setMobile(user.getMobile());
+            userDTO.setPicture(user.getPicture());
             userDTO.setRole(user.getRoleId().getRoleId());
             return userDTO;
         }

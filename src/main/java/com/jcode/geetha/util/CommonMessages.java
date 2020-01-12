@@ -32,5 +32,7 @@ public class CommonMessages {
     public static final String USER_UPDATED_FAILED= "Something went wrong when updating the user details";
     public static final String ALL_SONG_PAGE_DATA_FETCHED_SUCCESS= "All songs page data successfully fetched";
     public static final String ALL_SONG_PAGE_DATA_FETCHED_FAILED= "Something went wrong when fetching all song page data";
+    public static final String POSTS_FETCHED_SUCCESS_FOR_USER_DETAIL_PAGE= "Posts fetched success for the user";
+    public static final String POSTS_FETCHED_FAILED_FOR_USER_DETAIL_PAGE= "Something went wrong when fetching user's posts";
 
 }
