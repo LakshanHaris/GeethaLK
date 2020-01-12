@@ -58,10 +58,4 @@ public class CommonUtil {
         return dateObj;
     }
 
-    public static Post generateUpdatedPost(PostDTO postDTO, Post existingPost) {
-        existingPost.setMainHeader(postDTO.getMainHeader());
-        existingPost.setContent(postDTO.getContent());
-        return existingPost;
-    }
-
 }
