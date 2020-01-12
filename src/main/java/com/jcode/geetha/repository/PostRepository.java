@@ -33,4 +33,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "WHERE p.userId.userId=?1 " +
             "ORDER BY p.postId DESC")
     List<PostDTO> getUserPosts(Long userId, Pageable pageable);
+
+    Post findByPostId(Long postId);
 }

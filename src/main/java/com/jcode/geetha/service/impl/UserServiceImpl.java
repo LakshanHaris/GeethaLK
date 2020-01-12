@@ -1,6 +1,7 @@
 package com.jcode.geetha.service.impl;
 
 import com.jcode.geetha.dto.*;
+import com.jcode.geetha.model.Post;
 import com.jcode.geetha.model.User;
 import com.jcode.geetha.repository.PostRepository;
 import com.jcode.geetha.repository.UserRepository;
@@ -76,6 +77,23 @@ public class UserServiceImpl implements UserService {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.POSTS_FETCHED_SUCCESS_FOR_USER_DETAIL_PAGE, userDetailPageDTO);
         } else {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.POSTS_FETCHED_FAILED_FOR_USER_DETAIL_PAGE);
+        }
+        return responseDTO;
+    }
+
+    @Override
+    public ResponseDTO<Post> updateUserPost(PostDTO postDTO) {
+        ResponseDTO responseDTO;
+        Post searchedPost = postRepository.findByPostId(postDTO.getPostId());
+        if (Objects.nonNull(searchedPost)) {
+            Post updatedPost = postRepository.saveAndFlush(CommonUtil.generateUpdatedPost(postDTO, searchedPost));
+            if (Objects.nonNull(updatedPost)) {
+                responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.USER_POST_SUCCESSFULLY_UPDATED, updatedPost);
+            } else {
+                responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_POST_UPDATE_FAILED);
+            }
+        } else {
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.USER_POST_NOT_FOUND);
         }
         return responseDTO;
     }

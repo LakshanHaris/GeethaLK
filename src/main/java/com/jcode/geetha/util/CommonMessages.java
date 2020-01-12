@@ -34,5 +34,8 @@ public class CommonMessages {
     public static final String ALL_SONG_PAGE_DATA_FETCHED_FAILED= "Something went wrong when fetching all song page data";
     public static final String POSTS_FETCHED_SUCCESS_FOR_USER_DETAIL_PAGE= "Posts fetched success for the user";
     public static final String POSTS_FETCHED_FAILED_FOR_USER_DETAIL_PAGE= "Something went wrong when fetching user's posts";
+    public static final String USER_POST_SUCCESSFULLY_UPDATED= "User post updated successfully";
+    public static final String USER_POST_UPDATE_FAILED= "Something went wrong when updating user's posts";
+    public static final String USER_POST_NOT_FOUND= "We haven't found your post";
 
 }

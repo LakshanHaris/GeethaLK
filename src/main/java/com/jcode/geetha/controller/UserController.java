@@ -1,10 +1,8 @@
 package com.jcode.geetha.controller;
 
-import com.jcode.geetha.dto.AuthorizeDTO;
-import com.jcode.geetha.dto.ResponseDTO;
-import com.jcode.geetha.dto.UserDTO;
-import com.jcode.geetha.dto.UserDetailPageDTO;
+import com.jcode.geetha.dto.*;
 import com.jcode.geetha.enums.SessionTypeEnum;
+import com.jcode.geetha.model.Post;
 import com.jcode.geetha.model.User;
 import com.jcode.geetha.service.UserService;
 import com.jcode.geetha.util.CommonMessages;
@@ -94,4 +92,15 @@ public class UserController {
         }
         return responseDTO;
     }
+
+    @ResponseBody
+    @PostMapping(path = RequestEndPoints.UPDATE_USER_POST)
+    public ResponseDTO updateUserPost(@ModelAttribute("post") PostDTO postDTO) {
+        ResponseDTO<Post> responseDTO = userService.updateUserPost(postDTO);
+        if (Objects.nonNull(responseDTO)) {
+            logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), responseDTO.getMessage()));
+        }
+        return responseDTO;
+    }
+
 }

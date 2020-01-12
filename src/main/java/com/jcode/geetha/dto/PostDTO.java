@@ -19,12 +19,12 @@ public class PostDTO implements Serializable {
     private BigInteger shares;
     private Double views;
     private String userName;
-    private String name;
+    private String songName;
 
     public PostDTO() {
     }
 
-    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, String userName, String name) {
+    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, String userName, String songName) {
         this.postId = postId;
         this.content = content;
         this.mainHeader = mainHeader;
@@ -33,10 +33,10 @@ public class PostDTO implements Serializable {
         this.shares = shares;
         this.views = views;
         this.userName = userName;
-        this.name = name;
+        this.songName = songName;
     }
 
-    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, String name) {
+    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, String songName) {
         this.postId = postId;
         this.content = content;
         this.mainHeader = mainHeader;
@@ -44,7 +44,7 @@ public class PostDTO implements Serializable {
         this.dislikes = dislikes;
         this.shares = shares;
         this.views = views;
-        this.name = name;
+        this.songName = songName;
     }
 
     public Long getPostId() {
@@ -112,11 +112,11 @@ public class PostDTO implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return songName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.songName = name;
     }
 
 }
