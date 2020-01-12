@@ -102,7 +102,7 @@ public class SongServiceImpl implements SongService {
             songPageDTO.setSongDTO(songDTOWithLyrics);
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.SONG_POSTS_FETCHED_SUCCESS, songPageDTO);
         } else {
-            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.SONG_POSTS_FETCHED_FAILED);
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.SONG_POSTS_FETCHED_FAILED);
         }
         return responseDTO;
     }
@@ -114,7 +114,7 @@ public class SongServiceImpl implements SongService {
         if (updatedLikes > 0) {
             responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.SONG_LIKE_COUNT_UPDATE_SUCCESS);
         } else {
-            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.SONG_LIKE_COUNT_UPDATE_FAILED);
+            responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.SONG_LIKE_COUNT_UPDATE_FAILED);
         }
         return responseDTO;
     }
