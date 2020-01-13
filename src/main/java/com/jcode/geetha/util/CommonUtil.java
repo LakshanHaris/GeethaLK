@@ -1,7 +1,8 @@
 package com.jcode.geetha.util;
 
-import com.jcode.geetha.dto.PostDTO;
+import com.jcode.geetha.dto.PostingDTO;
 import com.jcode.geetha.dto.UserDTO;
+import com.jcode.geetha.model.Approval;
 import com.jcode.geetha.model.Post;
 import com.jcode.geetha.model.Role;
 import com.jcode.geetha.model.User;
@@ -56,6 +57,15 @@ public class CommonUtil {
     public static Date convertStringToDate(String date) throws Exception {
         Date dateObj = new SimpleDateFormat("yyyy-MM-dd").parse(date);
         return dateObj;
+    }
+
+    public static Post getPostFromPostingDTO(PostingDTO postingDTO) {
+        Post newPost = new Post();
+        newPost.setMainHeader(postingDTO.getMainHeader());
+        newPost.setContent(postingDTO.getContent());
+        newPost.setApprovalId(new Approval(postingDTO.getApprovalId()));
+        newPost.setUserId(new User(postingDTO.getUserId()));
+        return newPost;
     }
 
 }
