@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="lakshan" id="approval_1">
+        <addColumn schemaName="geetha"
+                   tableName="approval">
+            <column name="date_posted" type="date"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="lakshan" id="approval_2">
+        <addColumn schemaName="geetha"
+                   tableName="approval">
+            <column name="status" type="enum('0','1')" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="lakshan" id="approval_3">
+        <dropNotNullConstraint
+                columnDataType="date"
+                columnName="date_approved"
+                schemaName="geetha"
+                tableName="approval"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -42,9 +43,9 @@ public class PostServiceImpl implements PostService {
         if (Objects.nonNull(postingDTO)) {
             postingDTO.setApprovalId(generateApprovalDummyData().getApprovalId());
             Post newPosting = CommonUtil.getPostFromPostingDTO(postingDTO);
-            Post newlyaddedPost = postRepository.saveAndFlush(newPosting);
-            if (Objects.nonNull(newlyaddedPost)) {
-                responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.NEW_POST_HAVE_ADDED_SUCCESSFULLY, newlyaddedPost);
+            Post newlyAddedPost = postRepository.saveAndFlush(newPosting);
+            if (Objects.nonNull(newlyAddedPost)) {
+                responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_SUCCESS, CommonMessages.NEW_POST_HAVE_ADDED_SUCCESSFULLY, newlyAddedPost);
             } else {
                 responseDTO = ResponseUtil.getResponseDto(CommonMessages.RESPONSE_DTO_FAILED, CommonMessages.NEW_POST_HAVE_ADDED_FAILED);
             }
@@ -55,6 +56,8 @@ public class PostServiceImpl implements PostService {
     public Approval generateApprovalDummyData() {
         Approval newApproval = new Approval();
         newApproval.setAdminId(new User((long) 1));
+        newApproval.setDatePosted(new Date());
+        newApproval.setStatus("0");
         Approval approval = approvalRepository.saveAndFlush(newApproval);
         if (Objects.nonNull(approval)) {
             logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), CommonMessages.NEW_APPROVAL_DATA_ADDED_FOR_THE_POST));

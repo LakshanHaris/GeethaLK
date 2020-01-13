@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Date;
 
 /**
  * @author Lakshan harischandra
@@ -39,6 +40,8 @@ public class Post implements Serializable {
     private BigInteger shares;
     @Column(name = "views")
     private Double views;
+    @Column(name = "date_posted")
+    private Date datePosted;
     @JsonBackReference
     @JoinColumn(name = "post_approval_id", referencedColumnName = "approval_id")
     @ManyToOne(optional = false)
@@ -143,6 +146,14 @@ public class Post implements Serializable {
 
     public void setUserId(User userId) {
         this.userId = userId;
+    }
+
+    public Date getDatePosted() {
+        return datePosted;
+    }
+
+    public void setDatePosted(Date datePosted) {
+        this.datePosted = datePosted;
     }
 
     @Override

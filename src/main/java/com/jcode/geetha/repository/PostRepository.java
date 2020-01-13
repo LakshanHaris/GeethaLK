@@ -22,7 +22,7 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,u.userName,s.name) from Post  AS p\n" +
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,p.datePosted,u.userName,s.name) from Post  AS p\n" +
             "    LEFT JOIN User AS u\n" +
             "    ON  p.userId.userId = u.userId\n" +
             "    LEFT JOIN Song AS s\n" +
@@ -30,7 +30,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "    ORDER BY p.likes DESC")
     List<PostDTO> getTopTenPostList(Pageable pageable);
 
-    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,s.name) from Post  AS p " +
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,p.datePosted,s.name) from Post  AS p " +
             "LEFT JOIN Song AS s " +
             "ON p.songId.songId=s.songId " +
             "WHERE p.userId.userId=?1 " +
@@ -42,13 +42,13 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query(value = "UPDATE post SET content=:content,main_header=:mainHeader WHERE post_id=:postId", nativeQuery = true)
     int updateUserPost(@Param("content") String content, @Param("mainHeader") String mainHeader, @Param("postId") Long postId);
 
-    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,s.name) from Post AS p " +
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,p.datePosted,s.name) from Post AS p " +
             "LEFT JOIN Song AS s " +
             "ON p.songId.songId=s.songId " +
             "WHERE p.postId = ?1 ")
     PostDTO findUserPostDTOWithPostId(Long postId);
 
-    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views) from Post AS p " +
+    @Query(value = "SELECT new com.jcode.geetha.dto.PostDTO(p.postId,p.content,p.mainHeader,p.likes,p.dislikes,p.shares,p.views,p.datePosted) from Post AS p " +
             "WHERE p.songId.songId = ?1 ")
     List<PostDTO> findPostsForSong(int songId, Pageable pageable);
 }

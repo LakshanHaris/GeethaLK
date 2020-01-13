@@ -2,6 +2,7 @@ package com.jcode.geetha.dto;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Date;
 
 /**
  * Created by Lakshan harischandra
@@ -20,11 +21,12 @@ public class PostDTO implements Serializable {
     private Double views;
     private String userName;
     private String songName;
+    private Date datePosted;
 
     public PostDTO() {
     }
 
-    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, String userName, String songName) {
+    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, Date datePosted, String userName, String songName) {
         this.postId = postId;
         this.content = content;
         this.mainHeader = mainHeader;
@@ -34,9 +36,10 @@ public class PostDTO implements Serializable {
         this.views = views;
         this.userName = userName;
         this.songName = songName;
+        this.datePosted = datePosted;
     }
 
-    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, String songName) {
+    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, Date datePosted, String songName) {
         this.postId = postId;
         this.content = content;
         this.mainHeader = mainHeader;
@@ -44,10 +47,11 @@ public class PostDTO implements Serializable {
         this.dislikes = dislikes;
         this.shares = shares;
         this.views = views;
+        this.datePosted = datePosted;
         this.songName = songName;
     }
 
-    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views) {
+    public PostDTO(Long postId, String content, String mainHeader, BigInteger likes, BigInteger dislikes, BigInteger shares, Double views, Date datePosted) {
         this.postId = postId;
         this.content = content;
         this.mainHeader = mainHeader;
@@ -55,6 +59,7 @@ public class PostDTO implements Serializable {
         this.dislikes = dislikes;
         this.shares = shares;
         this.views = views;
+        this.datePosted = datePosted;
     }
 
     public Long getPostId() {
@@ -129,4 +134,11 @@ public class PostDTO implements Serializable {
         this.songName = name;
     }
 
+    public Date getDatePosted() {
+        return datePosted;
+    }
+
+    public void setDatePosted(Date datePosted) {
+        this.datePosted = datePosted;
+    }
 }

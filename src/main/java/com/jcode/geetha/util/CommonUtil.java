@@ -2,10 +2,7 @@ package com.jcode.geetha.util;
 
 import com.jcode.geetha.dto.PostingDTO;
 import com.jcode.geetha.dto.UserDTO;
-import com.jcode.geetha.model.Approval;
-import com.jcode.geetha.model.Post;
-import com.jcode.geetha.model.Role;
-import com.jcode.geetha.model.User;
+import com.jcode.geetha.model.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,6 +62,8 @@ public class CommonUtil {
         newPost.setContent(postingDTO.getContent());
         newPost.setApprovalId(new Approval(postingDTO.getApprovalId()));
         newPost.setUserId(new User(postingDTO.getUserId()));
+        newPost.setSongId(new Song(postingDTO.getSongId()));
+        newPost.setDatePosted(new Date());
         return newPost;
     }
 

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -24,13 +23,16 @@ public class Approval implements Serializable {
     @Column(name = "approval_id")
     private Integer approvalId;
     @Basic(optional = false)
-    @NotNull(message = "Date approved cannot be null")
     @Column(name = "date_approved")
     @Temporal(TemporalType.DATE)
     private Date dateApproved;
     @Size(max = 45, message = "Maximum character size exceeded for approval remark - 45")
     @Column(name = "remark")
     private String remark;
+    @Column(name = "date_posted")
+    private Date datePosted;
+    @Column(name = "status")
+    private String status;
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "approvalId")
     private List<Post> postCollection;
@@ -89,6 +91,22 @@ public class Approval implements Serializable {
 
     public void setAdminId(User adminId) {
         this.adminId = adminId;
+    }
+
+    public Date getDatePosted() {
+        return datePosted;
+    }
+
+    public void setDatePosted(Date datePosted) {
+        this.datePosted = datePosted;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

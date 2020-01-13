@@ -8,4 +8,6 @@
 
     <include file="/db/changelog/changes/changelog-user.xml"/>
     <include file="/db/changelog/changes/changelog-song.xml"/>
+    <include file="/db/changelog/changes/changelog-approval.xml"/>
+    <include file="/db/changelog/changes/changelog-post.xml"/>
 </databaseChangeLog>
