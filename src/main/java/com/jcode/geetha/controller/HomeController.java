@@ -44,11 +44,6 @@ public class HomeController {
         return responseDTO;
     }
 
-    @GetMapping(path = RequestEndPoints.GET_LEADER_BOARD_PAGE)
-    public String getLeaderBoardPage() {
-        logger.info(LoggerUtil.setLoggerInfoWithoutUser(this.getClass().toString(), "Leader board page page requested ..."));
-        return ViewEndPoints.LEADER_BOARD_PAGE;
-    }
 
     @GetMapping(path = RequestEndPoints.GET_ABOUT_US_PAGE)
     public String getAboutUsPage() {

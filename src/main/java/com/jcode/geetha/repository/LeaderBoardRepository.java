@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface LeaderBoardRepository extends JpaRepository<LeaderBoard, Integer> {
 
-    @Query(value = "SELECT l.* FROM leaderboard AS l ORDER BY  l.rank DESC", nativeQuery = true)
+    @Query(value = "SELECT l.* FROM leaderboard AS l ORDER BY  l.rank ASC ", nativeQuery = true)
     List<LeaderBoard> getLeaderBoardData(PageRequest pageRequest);
 
 }
