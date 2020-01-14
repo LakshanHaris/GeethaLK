@@ -25,6 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/" + RequestEndPoints.GET_SIGN_IN_PAGE, "/").permitAll()
                 .antMatchers("/" + RequestEndPoints.VERIFY_EMAIL, "/").permitAll()
+                .antMatchers("/" + RequestEndPoints.SAVE_USER, "/").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
