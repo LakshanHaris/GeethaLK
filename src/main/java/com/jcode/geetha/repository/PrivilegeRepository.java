@@ -1,8 +1,8 @@
 package com.jcode.geetha.repository;
 
 import com.jcode.geetha.model.Privilege;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Repository
-public interface PrivilegeRepository extends CrudRepository<Privilege, Integer> {
+public interface PrivilegeRepository extends JpaRepository<Privilege, Integer> {
 
     @Query(value = "SELECT p.* FROM privilege AS p \n" +
             "INNER JOIN role_has_privilege AS rp\n" +

@@ -23,6 +23,7 @@ public class RequestEndPoints {
     public static final String GET_POSTS_FOR_SONG = "song/getPosts";
     public static final String UPDATE_SONG_LIKES = "song/liked";
     public static final String POST_A_REVIEW = "song/posting";
+    public static final String GET_LEADERBOARD_DATA = "user/leaderBoard";
 
     public static final String REACT_CROSS_ORIGIN = "http://localhost:3000";
 }

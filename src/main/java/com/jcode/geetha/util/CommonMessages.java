@@ -43,5 +43,7 @@ public class CommonMessages {
     public static final String NEW_POST_HAVE_ADDED_SUCCESSFULLY = "New posting has been saved success";
     public static final String NEW_POST_HAVE_ADDED_FAILED = "Something went wrong when saving the new posting";
     public static final String NEW_APPROVAL_DATA_ADDED_FOR_THE_POST = "New approval record successfully added to the posting";
+    public static final String LEADERBOARD_DATA_FETCHED_SUCCESSFULLY = "leaderboard data fetched successfully for leaderboard page";
+    public static final String LEADERBOARD_DATA_FETCHED_FAILED = "Something wentt wrong when fetching the leaderboard data";
 
 }

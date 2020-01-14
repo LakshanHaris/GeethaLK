@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="lakshan" id="common_1">
+        <createTable schemaName="geetha" tableName="leaderboard">
+            <column autoIncrement="true" name="leader_board_id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="leader_board_id"/>
+            </column>
+            <column name="user_name" type="varchar(55)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rank" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="likes_count" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="post_count" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
