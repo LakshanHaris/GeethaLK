@@ -7,6 +7,7 @@ Created by Lakshan on 2019.10.11
 For Geetha.lk
 */
 public class UserDTO implements Serializable {
+    private Long userId;
     private String userName;
     private String firstName;
     private String lastName;
@@ -22,7 +23,8 @@ public class UserDTO implements Serializable {
     public UserDTO() {
     }
 
-    public UserDTO(String userName, String firstName, String lastName, String dob, String gender, String mobile, String email, String password, int rank, Integer role) {
+    public UserDTO(Long userId, String userName, String firstName, String lastName, String dob, String gender, String mobile, String email, String password, int rank, Integer role) {
+        this.userId = userId;
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,6 +42,14 @@ public class UserDTO implements Serializable {
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {

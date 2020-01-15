@@ -19,6 +19,7 @@ public class CommonUtil {
     public static User getUserFromUserDTO(UserDTO user) throws Exception {
         if (Objects.nonNull(user)) {
             User newUser = new User();
+            newUser.setUserId(user.getUserId());
             newUser.setUserName(user.getUserName());
             newUser.setFirstName(user.getFirstName());
             newUser.setLastName(user.getLastName());
@@ -37,6 +38,7 @@ public class CommonUtil {
     public static UserDTO getUserDTOFromUser(User user) {
         if (Objects.nonNull(user)) {
             UserDTO userDTO = new UserDTO();
+            userDTO.setUserId(user.getUserId());
             userDTO.setUserName(user.getUserName());
             userDTO.setFirstName(user.getFirstName());
             userDTO.setLastName(user.getLastName());
