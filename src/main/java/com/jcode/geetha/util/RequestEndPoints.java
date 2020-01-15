@@ -25,5 +25,5 @@ public class RequestEndPoints {
     public static final String POST_A_REVIEW = "song/posting";
     public static final String GET_LEADERBOARD_DATA = "user/leaderBoard";
 
-    public static final String REACT_CROSS_ORIGIN = "http://localhost:3000";
+    public static final String REACT_CROSS_ORIGIN = "http://www.geethalk.com";
 }
